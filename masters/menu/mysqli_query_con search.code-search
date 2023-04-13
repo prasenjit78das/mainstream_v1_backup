@@ -1,0 +1,274 @@
+# Query: mysqli_query($con
+# Flags: CaseSensitive WordMatch
+
+154 results - 58 files
+
+mainstream_v1 • assets\parent_data_func.php:
+   6: $a_rol_rslt = mysqli_query($con, $v_role_qr);
+  15: $a_nodrlt = mysqli_query($con, $v_qnode);
+  24: $a_ctyrlt = mysqli_query($con, $v_qcity);
+  33: $a_emp_rslt = mysqli_query($con, $v_emp_qr);
+  45: $a_deptrlt = mysqli_query($con, $v_qdept);
+  54: $a_menu_rslt = mysqli_query($con, $v_menu_qr);
+  63: $a_desig_rslt = mysqli_query($con, $v_desig_qr);
+  72: $a_mod_rslt = mysqli_query($con, $v_mod_qr);
+
+mainstream_v1 • masters\dbsqls\create_employee_mast_tables.php:
+   22:         if(mysqli_query($con, $qcrt1)){
+   40:       if(mysqli_query($con, $qgenins)){
+   63:         if(mysqli_query($con, $qcrt2)){
+   80:       if(mysqli_query($con, $qmlsins)){
+  103:         if(mysqli_query($con, $qcrt3)){
+  126:       if(mysqli_query($con, $qbldins)){
+  149:         if(mysqli_query($con, $qcntry)){
+  167:       if(mysqli_query($con, $qconins)){
+  192:         if(mysqli_query($con, $qstate)){
+  210:         if(mysqli_query($con, $qstsins)){
+  235:         if(mysqli_query($con, $qcty)){
+  254:       if(mysqli_query($con, $qctyins)){
+  278:         if(mysqli_query($con, $qgrd)){
+  299:       if(mysqli_query($con, $qgrdins)){
+  322:         if(mysqli_query($con, $qtyp)){
+  339:         if(mysqli_query($con, $qtypins)){
+  362:         if(mysqli_query($con, $qdesk)){
+  379:         if(mysqli_query($con, $qdeskins)){
+  402:         if(mysqli_query($con, $qshft)){
+  419:         if(mysqli_query($con, $qsftins)){
+  442:         if(mysqli_query($con, $qbank)){
+  459:         if(mysqli_query($con, $qbankins)){
+  539:         if(mysqli_query($con, $qemp)){
+
+mainstream_v1 • masters\dbsqls\create_menu_mast_tables.php:
+  24:         if(mysqli_query($con, $qcrt1)){
+
+mainstream_v1 • masters\dbsqls\create_menumap_mast_tables.php:
+  34:         if(mysqli_query($con, $qcrt1)){
+
+mainstream_v1 • masters\dbsqls\create_module_mast_tables.php:
+  24:         if(mysqli_query($con, $qcrt2)){
+  60:       if(mysqli_query($con, $qins)){
+  89:         if(mysqli_query($con, $qcrt1)){
+
+mainstream_v1 • masters\dbsqls\create_node_mast_tables.php:
+  22:         if(mysqli_query($con, $qcrt1)){
+  38:         if(mysqli_query($con, $qins)){
+  66:         if(mysqli_query($con, $qcrt2)){
+
+mainstream_v1 • masters\dbsqls\drop_employee_mast_tables.php:
+   11:             mysqli_query($con, $qemp);
+   20:           mysqli_query($con, $qdgen);
+   29:           mysqli_query($con, $qdmrl);
+   38:           mysqli_query($con, $qbdl);
+   47:             mysqli_query($con, $qdcity);
+   56:             mysqli_query($con, $qdstate);
+   65:             mysqli_query($con, $qdcoun);
+   74:             mysqli_query($con, $qdgrade);
+   83:             mysqli_query($con, $qdtype);
+   92:             mysqli_query($con, $qddesk);
+  101:             mysqli_query($con, $qdsh);
+  110:             mysqli_query($con, $qbank);
+
+mainstream_v1 • masters\dbsqls\drop_menu_mast_tables.php:
+  11:           mysqli_query($con, $qd1);
+
+mainstream_v1 • masters\dbsqls\drop_menumap_mast_tables.php:
+  11:           mysqli_query($con, $qd1);
+
+mainstream_v1 • masters\dbsqls\drop_module_mast_tables.php:
+  11:           mysqli_query($con, $qd2);
+  19:         mysqli_query($con, $qd1);
+
+mainstream_v1 • masters\dbsqls\drop_node_mast_tables.php:
+  13:     mysqli_query($con, $qd1);
+  22:     mysqli_query($con, $qd1);
+
+mainstream_v1 • masters\designation\create_designation_table.php:
+  23:         if(mysqli_query($con, $qcrt1)){
+
+mainstream_v1 • masters\designation\designation_getiddata.php:
+  11: $result = mysqli_query($con, $query);
+
+mainstream_v1 • masters\designation\designation_insup.php:
+  44:       // $qmatroledata=mysqli_query($con,$qmatrole);
+  62:     if(mysqli_query($con, $v_query)){
+
+mainstream_v1 • masters\designation\designation_master.php:
+  13:   $a_desigres = mysqli_query($con, $v_qdesige);
+  61:           $qmatroledata=mysqli_query($con,$qmatrole);
+
+mainstream_v1 • masters\designation\drop_designation_table.php:
+  13:     mysqli_query($con, $qd1);
+
+mainstream_v1 • masters\emp_role\create_empUserRole_table.php:
+  27:         if(mysqli_query($con, $qcrt1)){
+
+mainstream_v1 • masters\emp_role\drop_empUserRole_table.php:
+  13:     mysqli_query($con, $qd1);
+
+mainstream_v1 • masters\emp_role\empUserRole_getiddata.php:
+  11: $result = mysqli_query($con, $query);
+
+mainstream_v1 • masters\emp_role\empUserRole_insup.php:
+  73:     if(mysqli_query($con, $v_query)){
+
+mainstream_v1 • masters\emp_role\empUserRole_master.php:
+   59:           $qmatroledata=mysqli_query($con,$qmatrole);
+  158:                     $a_qempdata=mysqli_query($con,$v_qemp);
+  186:                 // $a_quserdata=mysqli_query($con,$v_quser);
+  212:                 $a_qroledata=mysqli_query($con,$v_qrole);
+
+mainstream_v1 • masters\employee\employee_cardview.php:
+  9: $result = mysqli_query($con,$v_query);
+
+mainstream_v1 • masters\employee\employee_form.php:
+  163:   $a_result = mysqli_query($con, $v_query);
+  577:                       $a_qdptdata=mysqli_query($con,$v_qdpt);
+  726:     $a_seldata=mysqli_query($con,$v_selqr);
+
+mainstream_v1 • masters\employee\employee_listview.php:
+   8: $result = mysqli_query($con,$v_query);
+  17:   $a_qdsgdata=mysqli_query($con,$v_qdsg);
+  25:   $a_qcitydata=mysqli_query($con,$v_qcity);
+
+mainstream_v1 • masters\employee\employee_post.php:
+  236:     if(mysqli_query($con, $v_query)){
+
+mainstream_v1 • masters\employee\employee_tableview.php:
+  17: $result = mysqli_query($con,$v_query);
+
+mainstream_v1 • masters\employee\employee_view.php:
+  163:   $a_result = mysqli_query($con, $v_query);
+  377:     $a_seldata=mysqli_query($con,$v_selqr);
+
+mainstream_v1 • masters\enterprise\node_del_act.php:
+  39:   $a_par=mysqli_query($con, $qry);
+  44:     mysqli_query($con, $v_dqry);
+  51:       mysqli_query($con, $v_dqry);
+
+mainstream_v1 • masters\enterprise\node_del.php:
+  21:   $a_rtres = mysqli_query($con, $v_rtqry);
+  34:     $result = mysqli_query($con, $v_query);
+  70:   $a_par=mysqli_query($con, $qry);
+  75:     mysqli_query($con, $v_dqry);
+  82:       mysqli_query($con, $v_dqry);
+
+mainstream_v1 • masters\enterprise\node_getiddata.php:
+  11: $result = mysqli_query($con, $query);
+
+mainstream_v1 • masters\enterprise\node_insup.php:
+   61:     $result = mysqli_query($con, $v_query);
+  107:         if(mysqli_query($con, $v_query)){
+
+mainstream_v1 • masters\enterprise\node_master.php:
+   83:                               $a_qnodtypdata=mysqli_query($con,$v_qnodtyp);
+  104:                               $a_qmentypdata=mysqli_query($con,$v_qmentyp);
+  160:     $a_par=mysqli_query($con, $qry);
+
+mainstream_v1 • masters\menu\menu_del_act.php:
+  30:   $a_par=mysqli_query($con, $qry);
+  35:     mysqli_query($con, $v_dqry);
+  42:       mysqli_query($con, $v_dqry);
+
+mainstream_v1 • masters\menu\menu_del.php:
+  20:   $a_rtres = mysqli_query($con, $v_rtqry);
+  33:     $result = mysqli_query($con, $v_query);
+  56:   $a_par=mysqli_query($con, $qry);
+  61:     mysqli_query($con, $v_dqry);
+  68:       mysqli_query($con, $v_dqry);
+
+mainstream_v1 • masters\menu\menu_getiddata.php:
+  11: $result = mysqli_query($con, $query);
+
+mainstream_v1 • masters\menu\menu_insup.php:
+   56:     $result = mysqli_query($con, $v_query);
+  100:         if(mysqli_query($con, $v_query)){
+
+mainstream_v1 • masters\menu\menu_master - Copy.php:
+   79:                           $a_qmodtypdata=mysqli_query($con,$v_qmodtyp);
+  105:                           $a_qmentypdata=mysqli_query($con,$v_qmentyp);
+  157:     $a_par=mysqli_query($con, $qry);
+  192:     $a_par=mysqli_query($con, $qry);
+  203:           $a_pary=mysqli_query($con, $qryy);
+  237:   $a_module=mysqli_query($con, $v_qurmod);
+  242:       $a_pary=mysqli_query($con, $qryy);
+  252:     $a_par=mysqli_query($con, $qry);
+
+mainstream_v1 • masters\menu\menu_master.php:
+   78:                           $a_qmodtypdata=mysqli_query($con,$v_qmodtyp);
+  104:                           $a_qmentypdata=mysqli_query($con,$v_qmentyp);
+  156:     $a_par=mysqli_query($con, $qry);
+
+mainstream_v1 • masters\menu_role_map\menu_role_getiddata.php:
+  60:           $a_rs=mysqli_query($con,$v_qs);
+
+mainstream_v1 • masters\menu_role_map\menu_role_ins_form.php:
+  65:     $a_par=mysqli_query($con, $qry);
+  94:               $a_rs=mysqli_query($con,$v_qs);
+
+mainstream_v1 • masters\menu_role_map\menu_role_master.php:
+  29:                     $a_qnoddata=mysqli_query($con,$v_qnod);
+  59:                     $a_qmoddata=mysqli_query($con,$v_qmod);
+  80:                     $a_qroledata=mysqli_query($con,$v_qrole);
+
+mainstream_v1 • masters\menu_role_map\menu_role_post.php:
+   85:           $result = mysqli_query($con, $v_query);
+  115:         mysqli_query($con, $v_query) or
+
+mainstream_v1 • masters\module\module_getiddata.php:
+  11: $result = mysqli_query($con, $query);
+
+mainstream_v1 • masters\module\module_master.php:
+  51:           $qmatmoduldata=mysqli_query($con,$qmatmodul);
+
+mainstream_v1 • masters\module\module_post.php:
+  52:       $result = mysqli_query($con, $v_query);
+  92:     if(mysqli_query($con, $v_query)){
+
+mainstream_v1 • masters\role\role_getiddata.php:
+  11: $result = mysqli_query($con, $query) or
+
+mainstream_v1 • masters\role\role_insup.php:
+  56:       $qmatroledata=mysqli_query($con,$qmatrole);
+  74:     if(mysqli_query($con, $v_query)){
+
+mainstream_v1 • masters\role\role_master.php:
+  13:   $a_nodres = mysqli_query($con, $v_qnode);
+  26:   $a_modres = mysqli_query($con, $v_qmodule);
+  36:   $a_rolres = mysqli_query($con, $v_qrole);
+  84:           $qmatroledata=mysqli_query($con,$qmatrole);
+
+mainstream_v1 • masters\template\create_template_table.php:
+  23:         if(mysqli_query($con, $qcrt1)){
+
+mainstream_v1 • masters\template\drop_template_table.php:
+  13:     mysqli_query($con, $qd1);
+
+mainstream_v1 • masters\template\template_getiddata.php:
+  11: $result = mysqli_query($con, $query);
+
+mainstream_v1 • masters\template\template_insup.php:
+  44:       // $qmatroledata=mysqli_query($con,$qmatrole);
+  62:     if(mysqli_query($con, $v_query)){
+
+mainstream_v1 • masters\template\template_master.php:
+  13:   $a_nodres = mysqli_query($con, $v_qnode);
+  23:   $a_modres = mysqli_query($con, $v_qmodule);
+  33:   $a_temres = mysqli_query($con, $v_qteme);
+  81:           $qmatroledata=mysqli_query($con,$qmatrole);
+
+mainstream_v1 • masters\user\create_user_table.php:
+  30:         if(mysqli_query($con, $qcrt1)){
+
+mainstream_v1 • masters\user\drop_user_table.php:
+  13:     mysqli_query($con, $qd1);
+
+mainstream_v1 • masters\user\user_getiddata.php:
+  11: $result = mysqli_query($con, $query) or
+
+mainstream_v1 • masters\user\user_insup.php:
+  84:     if(mysqli_query($con, $v_query)){
+
+mainstream_v1 • masters\user\user_master.php:
+   15: //   $a_useres = mysqli_query($con, $v_qusee) or
+   67:           $qmatroledata=mysqli_query($con,$qmatrole)
+  159:                     $a_qempdata=mysqli_query($con,$v_qemp);

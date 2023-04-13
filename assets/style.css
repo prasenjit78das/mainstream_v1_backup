@@ -1,0 +1,68 @@
+.cls_data_area {
+    width: 100%;
+    height: 300pt;
+    overflow: auto;
+    overflow-x: hidden;
+    border: 0.5pt #eee solid;
+}
+.cls_form_area {
+    width: 100%;
+    height: 350pt;
+    overflow: auto;
+    overflow-x: hidden;
+    border: 0.5pt #eee solid;
+}
+
+body {
+    background-color: aliceblue;
+    overflow-y: hidden;
+    font-family: Calibri;
+}
+table{
+    font-family: Calibri;
+}
+thead {
+    background-color: #003a8c;
+    color: white;
+}
+
+.ins-main {
+    background-color: rgb(100, 100, 100, 0.6);
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}
+
+.ins-box {
+    position: relative;
+    top: 10%;
+    left: 30%;
+    width: 300pt;
+    height: auto;
+    padding: 4pt;
+    border: 1pt blue solid;
+    background-color: azure;
+}
+
+.ins-bod {
+    text-align: center;
+    padding: 3pt;
+    width: 100%;
+}
+
+.ins-foot {
+    text-align: right;
+    padding: 3pt;
+}
+
+.td_num {
+    text-align: right;
+}
+
+.td_text {
+    text-align: left;
+}
+
+.td_act {
+    text-align: center;
+}

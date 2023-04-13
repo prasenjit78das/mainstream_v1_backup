@@ -1,0 +1,27 @@
+.dataTables_length {
+    float: left;
+    margin-right: 10px;
+}
+.dt-buttons {
+    padding-left: 20px;
+    margin-top: 11px;
+}
+.dataTables_filter {
+    margin-top: -28px;
+}
+td.sorting:before, td.sorting_asc:before, td.sorting_desc:before{
+    font-size: 1.7em !important;
+    line-height: 14px !important;
+    opacity: .25px !important;            
+}
+td.sorting:after, td.sorting_asc:after, td.sorting_desc:after{
+    font-size: 1.7em !important;
+    line-height: 14px !important;
+    opacity: .25px !important;
+}
+.odd {
+    background-color: #BEE8FC !important;
+}
+tr.odd:hover, tr.even:hover {
+    background-color: whitesmoke !important;
+}

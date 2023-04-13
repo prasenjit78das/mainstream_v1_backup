@@ -1,0 +1,85 @@
+# Query: session.php
+# Flags: CaseSensitive WordMatch RegExp
+
+27 results - 27 files
+
+mainstream_v1 • masters\create_employee_mast_tables.php:
+  3: //require_once('../connec/session.php');
+
+mainstream_v1 • masters\create_menu_mast_tables.php:
+  3: //require_once('../connec/session.php');
+
+mainstream_v1 • masters\create_menumap_mast_tables.php:
+  3: //require_once('../connec/session.php');
+
+mainstream_v1 • masters\create_module_mast_tables.php:
+  3: //require_once('../connec/session.php');
+
+mainstream_v1 • masters\create_node_mast_tables.php:
+  3: //require_once('../connec/session.php');
+
+mainstream_v1 • masters\drop_employee_mast_tables.php:
+  3: //require_once('../connec/session.php');
+
+mainstream_v1 • masters\drop_menu_mast_tables.php:
+  3: //require_once('../connec/session.php');
+
+mainstream_v1 • masters\drop_menumap_mast_tables.php:
+  3: //require_once('../connec/session.php');
+
+mainstream_v1 • masters\drop_module_mast_tables.php:
+  3: //require_once('../connec/session.php');
+
+mainstream_v1 • masters\drop_node_mast_tables.php:
+  3: //require_once('../connec/session.php');
+
+mainstream_v1 • masters\employee_form.php:
+  3: //require_once('../connec/session.php');
+
+mainstream_v1 • masters\employee_list.php:
+  3: //require_once('../connec/session.php');
+
+mainstream_v1 • masters\employee_post.php:
+  3:   //require_once('../connec/session.php');
+
+mainstream_v1 • masters\menu_del_act.php:
+  3:   //require_once('../connec/session.php');
+
+mainstream_v1 • masters\menu_del.php:
+  3:   //require_once('../connec/session.php');
+
+mainstream_v1 • masters\menu_insup.php:
+  3:   //require_once('../connec/session.php');
+
+mainstream_v1 • masters\menu_master.php:
+  3: //require_once('../connec/session.php');
+
+mainstream_v1 • masters\menu_role_master.php:
+  3: //require_once('../connec/session.php');
+
+mainstream_v1 • masters\menu_role_post.php:
+  3:   //require_once('../connec/session.php');
+
+mainstream_v1 • masters\module_master.php:
+  3: //require_once('../connec/session.php');
+
+mainstream_v1 • masters\module_post.php:
+  3:   //require_once('../connec/session.php');
+
+mainstream_v1 • masters\node_del_act.php:
+  3:   //require_once('../connec/session.php');
+
+mainstream_v1 • masters\node_del.php:
+  3:   //require_once('../connec/session.php');
+
+mainstream_v1 • masters\node_insup.php:
+  3:   //require_once('../connec/session.php');
+
+mainstream_v1 • masters\node_master.php:
+  3: //require_once('../connec/session.php');
+
+mainstream_v1 • masters\role_insup.php:
+  3:   //require_once('../connec/session.php');
+
+mainstream_v1 • masters\role_master.php:
+  3: //require_once('../connec/session.php');
