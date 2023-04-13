@@ -12,8 +12,6 @@ while ($row = mysqli_fetch_assoc($a_rol_rslt)) {
 }
 // Return the data as JSON
 $json_role= json_encode($a_role_data);
-echo $urc='PDAS';
-
 
 // Construct the node query for displaying Business Unit name
 $v_qnode = "SELECT `nodid`,`nodnm`,`ntpid`,`pndid` FROM `mast_node`";
