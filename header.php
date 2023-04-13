@@ -12,8 +12,8 @@
   <!-- file path information -->
   <?php 
    mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
-   $v_root_directory="/mainstream_v1";
-   $v_absolutePath="http://localhost".$v_root_directory;
+   $v_root_directory="/mainstream_v1_backup";
+   $v_absolutePath="https://e-utility.in".$v_root_directory;
    require_once('connec/connect.php');
    $urc='PDAS';
    require_once('connec/connect_btsp5.php');
