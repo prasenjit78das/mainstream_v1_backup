@@ -20,7 +20,7 @@ if (!$result) {
 // Fetch the data into an array
 //$data = mysqli_fetch_all($result, MYSQLI_ASSOC);
 $data = array();
-while ($rowd = mysqli_fetch_assoc($a_nodrlt)) {
+while ($rowd = mysqli_fetch_assoc($result)) {
     $data[] = $rowd;
 }
 // Return the data as JSON
