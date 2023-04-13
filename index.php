@@ -1,5 +1,4 @@
 <?php 
-echo 'Test';
 $page_title='Login Page';
 require_once('header.php');
 $footer_position="fixed-bottom";
