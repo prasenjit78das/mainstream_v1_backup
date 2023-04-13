@@ -18,8 +18,11 @@ if (!$result) {
 }
 
 // Fetch the data into an array
-$data = mysqli_fetch_all($result, MYSQLI_ASSOC);
-
+//$data = mysqli_fetch_all($result, MYSQLI_ASSOC);
+$data = array();
+while ($rowd = mysqli_fetch_assoc($a_nodrlt)) {
+    $data[] = $rowd;
+}
 // Return the data as JSON
 echo json_encode($data);
 
