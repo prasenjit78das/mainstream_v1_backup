@@ -30,7 +30,7 @@ try {
 }
 
 $v_qrole = "SELECT `rolid` id, `rolnm` nm 
-            FROM `n_mast_role` 
+            FROM `n_mast_role_name` 
             ORDER BY rolid;";
 try {
   $a_rolres = mysqli_query($con, $v_qrole);
