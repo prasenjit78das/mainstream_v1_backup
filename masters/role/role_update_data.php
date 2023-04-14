@@ -1,31 +1,30 @@
 <script>
-function insert_data(id,mode){ //'
+function update_data(id,mode){ //'
   //alert(mode)
   $('#div_warn,.del_alert').hide();
-if(mode=='ins'){///insert data
-  var blnk="";
-    $('#te_temnm,#hi_temid').val(blnk)
-                .removeAttr('disabled');
+  if(mode=='edt'){///update data
+    $('#te_rolnm').removeAttr('disabled');
     $('#bu_btn').show().val('Save')
-                .attr({'onclick':'insertRecord()','name':'su_add'});
-    $('.modal-title').html('Add X-Name');
+                .attr({'onclick':'updateRecord()','name':'su_edt'});
+    $('.modal-title').html('Edit Role');
+    fetchRecord(id);
   }else{};
 }
-  function insertRecord() {
-  //alert('Clicked');
+ ///
+function updateRecord() {
   // Get the values of the form fields
-  var v_temnm = $('#te_temnm').val();
+  var v_rolid = $('#hi_rolid').val();
+  var v_rolnm = $('#te_rolnm').val();
   var v_bu_btn = $('#bu_btn').val();
-   // Add more variables for each form field
-if((v_temnm!='')){
-  $('#div_warn').hide();
   // Make an AJAX request to the server-side script
+  if((v_rolnm!='')){
   $.ajax({
-    url: 'template_insup.php',
+    url: 'role_insup.php',
     type: 'post',
     data: {
-      temnm: v_temnm,
-      su_add: v_bu_btn,
+      rolid: v_rolid,
+      rolnm: v_rolnm,
+      su_edt: v_bu_btn,
     },
     // Add more data for each form field
     success: function(response) {
@@ -34,19 +33,20 @@ if((v_temnm!='')){
         $('#div_warn').show();
         $('#alert-text').html(response);
       }else if(response==''){
-      // Insert was successful, close the modal and refresh the table
+      // Update was successful, close the modal and refresh the table
       $('#insertModal').modal('hide');
       refreshTable();
       }
     },
     error: function(response) {
-      // Insert failed, show an error message
-      alert('Insert failed');
+      // Update failed, show an error message
+      alert('Update failed');
     }
-  });
+   });
   }else{
     $('#div_warn').show();
     $('#alert-text').html('Please fill up mandatory fields !!');
   }
 }
+///
 </script>

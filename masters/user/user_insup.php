@@ -88,16 +88,14 @@ try{
       elseif($v_ermgs!=''){
         echo $v_ermgs;
       }
-      //echo '<br/>'.$v_query.'<br/>';
+      f_error($con);
     }
     else{
-      //echo $v_query.'<br/>';
+      f_error($con);
         }
 
 }catch(mysqli_sql_exception $e){
-  //echo '<br>Error-'.mysqli_errno($con).mysqli_error($con);
- echo $v_errno = mysqli_errno($con);
- //die("Error description: " . mysqli_error($con)); 
+  f_error($con);
 }
 Mysqli_rollback($con);
 // Close the connection

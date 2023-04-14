@@ -20,7 +20,8 @@ $password = 'GmZ)6-d?RCk,!NALh';
 // Set MySQLi to throw exceptions 
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT); 
 try {
-    $con = @mysqli_connect($host_name,$user_name,$password,$database_name);   
+    $con = @mysqli_connect($host_name,$user_name,$password,$database_name); 
+    include('../../assets/common_php_func.php');  
 } catch (mysqli_sql_exception $e) {
     //echo 'Error-'.mysqli_error($con);
     die("Connection details are incorrect!");

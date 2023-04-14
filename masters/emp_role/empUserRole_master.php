@@ -26,7 +26,7 @@ $a_role_array = json_decode($json_role, true);
     <div class="input-group p-2 input-group-sm d-flex justify-content-end"
       data-bs-toggle='modal' data-bs-target='#insertModal' 
       onclick="insert_data(0,'ins')">
-    <span class="input-group-text text-light bg-dark">Add Emp-User-Role</span>
+    <span class="input-group-text text-light bg-dark">Add Emp-Role</span>
     <button type='button' class='btn btn-light border border-3' >+</button>
   </div>
   </div>

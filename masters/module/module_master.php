@@ -22,7 +22,7 @@ $i=0;
   <div class="col-md-8">
     <div class="input-group p-2 input-group-sm d-flex justify-content-end"
       data-bs-toggle='modal' data-bs-target='#insertModal' 
-      onclick="insup_data(0,'ins')">
+      onclick="insert_data(0,'ins')">
       <span class="input-group-text text-light bg-dark">Add Module</span>
       <button type='button' class='btn btn-light border border-3'>+</button>
     </div>
@@ -62,11 +62,11 @@ $i=0;
               echo '<td class="td_text">'.$tritems["crtby"].'</td>';
               echo '<td class="td_text">'.$tritems["crton"].'</td>';
               echo '<td class="td_act">';?>
-                  <span onclick="insup_data(<?=$tritems['modid'];?>,'edt')" 
+                  <span onclick="update_data(<?=$tritems['modid'];?>,'edt')" 
                     data-bs-toggle="modal" data-bs-target="#insertModal">
                     <i class="bi-pencil-square"></i>
                   </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <span onclick="insup_data(<?=$tritems['modid'];?>,'del')"
+                  <span onclick="delete_data(<?=$tritems['modid'];?>,'del')"
                     data-bs-toggle="modal" data-bs-target="#insertModal">
                     <i class="bi-dash-circle"></i>
                   </span>
@@ -91,24 +91,6 @@ $i=0;
  <?php 
 require_once('../../footer.php');
 ?>
-<script>
-// To implement Export to CSV and ordering table
-$(document).ready(function() {
-  $('#tbl_sm').dataTable({
-    dom: 'lBfrtip',
-    buttons: [
-      {
-        extend: 'csvHtml5',
-        exportOptions: {
-            columns: [0]
-        },
-        text: ''
-      }            
-    ],
-    order: [[0, 'asc']]
-  });
-});
-</script>
 <!-- to close the display and action of export to excel -->
 <style>  
 .buttons-csv{
@@ -155,7 +137,7 @@ $(document).ready(function() {
         </form>
       </div>
       <!-- Modal footer -->
-      <div class='modal-footer'>
+      <div class='modal-footer' id="div_alert">
         <div class="container mt-3" id="div_warn" style="display:none;">
           <div class="alert alert-warning">
               <strong id="alert-text">Deletion not allowed, role(s) exists reporting to this role</strong>
@@ -168,195 +150,15 @@ $(document).ready(function() {
 </div>
 
 <script>
-function insup_data(id,mode){ //'
-  //alert(mode)
-  if(mode=='ins'){///insert data
-    var blnk="";
-    $('#te_modnm').val(blnk).removeAttr('disabled');
-    $('#se_isact,#se_fsusr').removeAttr('disabled');
-    $('#bu_btn').show().val('Add')
-                .attr({'onclick':'insertRecord()','name':'su_add'});
-    $('.modal-title').html('Add Module');
-  }
-  else if(mode=='edt'){///update data
-    $('#te_modnm,#se_isact,#se_fsusr').removeAttr('disabled');
-    $('#bu_btn').show().val('Update')
-                .attr({'onclick':'updateRecord()','name':'su_edt'});
-    $('.modal-title').html('Edit Module');
-    fetchRecord(id);
-  }
-  else if(mode=='del'){///delete data
-    $('#bu_btn').show().val('Delete')
-                .attr({'onclick':'deleteRecord()','name':'su_del'});
-    $('.modal-title').html('Delete Module');
-    fetchRecord(id);
-    $('#te_modnm,#se_isact,#se_fsusr').attr('disabled',true);
-  }
-  $('#div_warn').hide();
-}
-
-function insertRecord() {
-  //alert('Clicked');
-  // Get the values of the form fields
-  var v_modid = $('#se_modid').val();
-  var v_modnm = $('#te_modnm').val();
-  var v_isact = $('#se_isact').val();
-  var v_fsusr = $('#se_fsusr').val();
-  var v_bu_btn = $('#bu_btn').val();
-   // Add more variables for each form field
-if((v_modnm!='')){
-  $('#div_warn').hide();
-  // Make an AJAX request to the server-side script
-  $.ajax({
-    url: 'module_post.php',
-    type: 'post',
-    data: {
-      modnm: v_modnm,
-      isact: v_isact,
-      fsusr: v_fsusr,
-      su_add: v_bu_btn,
-    },
-    // Add more data for each form field
-    success: function(response) {
-      //alert(response);
-      if(response!=''){
-        $('#div_warn').show();
-        $('#alert-text').html(response);
-      }else{
-        // Insert was successful, close the modal and refresh the table
-        $('#insertModal').modal('hide');
-        refreshTable();
-      }  
-    },
-    error: function(response) {
-      // Insert failed, show an error message
-      alert('Insert failed');
-    }
-  });
-  }else{
-    $('#div_warn').show();
-    $('#alert-text').html('Please fill up mandatory fields !!');
-  }
-}
 /////
 function refreshTable() {
   //alert('refresh');
   location.reload();
 }
-/////
-function fetchRecord(id) {  //alert(id);
-  //Make an AJAX request to the server-side script to 
-  //get the data for the selected record
-  $.ajax({
-    url: 'module_getiddata.php',
-    type: 'get',
-    dataType: 'json',
-    data: {modid: id},
-    success: function(response) { //alert(response);
-      //alert('test');
-      // The request was successful, update the form with the returned data
-      $('#insertModal').modal('show');
-      $('#te_modid').val(response[0].modid);
-      $('#te_modnm,#te_old_modnm').val(response[0].modnm); 
-      $('#se_isact').val(response[0].isact); 
-      $('#se_fsusr').val(response[0].fsusr);           
-      // Add more form fields for each column in the table
-      //alert('ttt');
-    },
-    error: function(response) {
-      // The request failed, show an error message
-      alert('Error: '+response.responseText);
-    }
-  });
-}
-///
-function updateRecord() {
-  // Get the values of the form fields
-  var v_modid = $('#te_modid').val();
-  var v_modnm = $('#te_modnm').val();
-  var v_old_modnm = $('#te_old_modnm').val();
-  var v_isact = $('#se_isact').val();
-  var v_fsusr = $('#se_fsusr').val();
-  var v_bu_btn = $('#bu_btn').val();
-  // Make an AJAX request to the server-side script
-  if((v_modid!='')&&(v_modnm!='')){
-  $.ajax({
-    url: 'module_post.php',
-    type: 'post',
-    data: {
-      modid: v_modid,
-      modnm: v_modnm,
-      old_modnm: v_old_modnm,
-      isact: v_isact,
-      fsusr: v_fsusr,
-      su_edt: v_bu_btn,
-    },
-    // Add more data for each form field
-    success: function(response) {
-      //alert(response);
-      if(response!=''){
-        $('#div_warn').show();
-        $('#alert-text').html(response);
-      }else{
-        // Insert was successful, close the modal and refresh the table
-        $('#insertModal').modal('hide');
-        refreshTable();
-      }  
-    },
-    error: function(response) {
-      // Update failed, show an error message
-      alert('Update failed');
-    }
-   });
-  }else{
-    $('#div_warn').show();
-    $('#alert-text').html('Please fill up mandatory fields !!');
-  }
-}
-///
-function deleteRecord() {
-  // Get the values of the form fields
-  var v_modid = $('#te_modid').val();
-  var v_bu_btn = $('#bu_btn').val();
-  // Make an AJAX request to the server-side script
-  $.ajax({
-    url: 'module_post.php',
-    type: 'post',
-    data: {
-      modid: v_modid,
-      su_del: v_bu_btn,
-    },
-    // Add more data for each form field
-    success: function(response) {//alert(response);
-      if(response!=''){ 
-        $('#div_warn').show(); 
-        $('input[name="su_del"]').hide(); 
-        $('#alert-text').html(response);
-      }else if(response==''){
-        //close the modal and refresh the table
-        $('#insetModal').modal('hide');
-        refreshTable();
-      }
-    },
-    error: function(response) {
-      // Update failed, show an error message
-      alert('Delete failed');
-    }
-  });
-}
-
 </script>
-
-<?php
-  function f_get_req_condition($v_cond){
-    if($v_cond==0){
-      return ('No');
-    }
-    else if($v_cond==1){
-      return('Yes');
-    }
-    else{
-      return ('Unknown');
-    }
-}
-?>
+<?php 
+ include('module_insert_data.php');
+ include('module_fetch_data.php');
+ include('module_update_data.php');
+ include('module_delete_data.php');
+ ?>

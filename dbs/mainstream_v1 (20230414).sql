@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 13, 2023 at 08:54 PM
+-- Generation Time: Apr 14, 2023 at 03:38 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -51,7 +51,7 @@ INSERT INTO `mast_node` (`nodid`, `nodnm`, `ntpid`, `pndid`, `descr`, `addrs`, `
 (1, 'mageba India', 1, 0, '', '', '', '', 'PDAS', '2023-03-08 09:41:57', 'PDAS', '2023-04-07 06:41:12', 'N'),
 (2, 'HO', 1, 1, 'werwer', 'sdfsd', 'xcvxc', 'rtrt', 'PDAS', '2023-03-08 09:42:39', 'PDAS', '2023-04-03 19:31:21', 'N'),
 (3, 'Unit 1', 2, 1, '', '', '', '', 'PDAS', '2023-03-08 09:42:54', 'PDAS', '2023-04-07 06:43:58', 'N'),
-(7, 'Accounts', 3, 2, '', '', '', '', 'PDAS', '2023-04-03 23:03:17', 'PDAS', '2023-04-07 06:42:20', 'N'),
+(7, 'Accounts', 3, 2, '', '', '', '', 'PDAS', '2023-04-03 23:03:17', 'PDAS', '2023-04-14 10:14:40', 'N'),
 (9, 'Procurement', 3, 2, '', '', '', '', 'PDAS', '2023-04-07 10:12:44', NULL, NULL, 'N'),
 (10, 'Sales', 3, 2, '', '', '', '', 'PDAS', '2023-04-07 10:13:02', NULL, NULL, 'N'),
 (11, 'HR', 3, 2, '', '', '', '', 'PDAS', '2023-04-07 10:13:10', NULL, NULL, 'N'),
@@ -219,15 +219,19 @@ CREATE TABLE `n_mast_designation` (
 --
 
 INSERT INTO `n_mast_designation` (`desigid`, `designm`, `crtby`, `crton`, `updby`, `updon`, `isdel`) VALUES
-(1, 'HOD', 'PDAS', '2023-04-07 11:35:21', 'PDAS', '2023-04-07 08:06:40', 'N'),
+(1, 'HOD', 'PDAS', '2023-04-07 11:35:21', 'PDAS', '2023-04-07 08:06:40', 'Y'),
 (2, 'Manager', 'PDAS', '2023-04-07 11:36:25', NULL, NULL, 'N'),
-(3, 'Accountant', 'PDAS', '2023-04-07 11:37:25', NULL, NULL, 'N'),
+(3, 'Accountant', 'PDAS', '2023-04-07 11:37:25', 'PDAS', '2023-04-14 05:25:11', 'N'),
 (4, 'Account Executive', 'PDAS', '2023-04-07 11:37:49', NULL, NULL, 'N'),
 (7, 'Production Manager', 'PDAS', '2023-04-07 11:46:41', NULL, NULL, 'N'),
 (8, 'Production Executive', 'PDAS', '2023-04-07 11:47:24', NULL, NULL, 'N'),
 (9, 'QA/QC Manager', 'PDAS', '2023-04-07 11:48:07', NULL, NULL, 'N'),
 (10, 'QA/QC Executive', 'PDAS', '2023-04-07 11:48:43', NULL, NULL, 'N'),
-(11, 'Executive', 'PDAS', '2023-04-07 12:35:38', NULL, NULL, 'N');
+(11, 'Executive', 'PDAS', '2023-04-07 12:35:38', NULL, NULL, 'Y'),
+(29, 'Staff34', 'PDAS', '2023-04-14 08:57:22', 'PDAS', '2023-04-14 09:47:38', 'Y'),
+(39, 'Staff345', 'PDAS', '2023-04-14 13:21:59', 'PDAS', '2023-04-14 10:01:08', 'Y'),
+(40, 'Staff', 'PDAS', '2023-04-14 14:50:29', NULL, NULL, 'Y'),
+(44, 'Test Desig67', 'PDAS', '2023-04-14 15:40:20', 'PDAS', '2023-04-14 12:10:50', 'Y');
 
 -- --------------------------------------------------------
 
@@ -335,7 +339,7 @@ INSERT INTO `n_mast_emp` (`empid`, `ftnam`, `mdnam`, `ltnam`, `genid`, `dob`, `m
 (6, 'Dipankar', '', 'Choudhury', 1, '0000-00-00', 1, 5, '', '', '', '', '', '', '', '', '', '', '', 0, '', 0, 0, '', '', 0, 0, 0, 0, '', '', '', '0000-00-00', 0, 'dchoudhury@mageba.in', 4, 0, NULL, '9830072732', 1, 0, 0, 0, 0, '', '', 0, '', 0, '', 0, 0, '', '', '', '', '0000-00-00 00:00:00', '', '', 'N'),
 (7, 'Santanu', '', 'Majumdar', 1, '0000-00-00', 1, 5, '', '', '', '', '', '', '', '', '', '', '', 0, '', 0, 0, '', '', 0, 0, 0, 0, '', '', '', '0000-00-00', 0, 'smajumdar@mageba.in', 4, 0, NULL, '9836833313', 1, 0, 0, 0, 0, '', '', 0, '', 0, '', 0, 0, '', '', '', '', '0000-00-00 00:00:00', '', '', 'N'),
 (8, 'Jayanti', '', 'Mitra', 2, '0000-00-00', 1, 5, '', '', '', '', '', '', '', '', '', '', '', 0, '', 0, 0, '', '', 0, 0, 0, 0, '', '', '', '0000-00-00', 0, 'jmitra@mageba.in', 4, 0, NULL, '9830065183', 1, 0, 0, 0, 0, '', '', 0, '', 0, '', 0, 0, '', '', '', '', '0000-00-00 00:00:00', '', '', 'N'),
-(9, 'Agamoni', '', 'Das', 1, '0000-00-00', 1, 5, '', '', '', '', '', '', '', '', '', '', '', 0, '', 0, 0, '', '', 0, 0, 0, 0, '', '', '', '2023-04-12', 11, 'adas@mageba.in', 4, 10, 2, '9836433305', 1, 0, 0, 0, 0, '', '', 0, '', 0, '', 0, 0, '', '', '', '', '0000-00-00 00:00:00', 'PDAS', '2023-04-13 04:30:13', 'N'),
+(9, 'Agamoni', '', 'Das', 1, '0000-00-00', 1, 5, '', '', '', '', '', '', '', '', '', '', '', 0, '', 0, 0, '', '', 0, 0, 0, 0, '', '', '', '2023-04-12', 2, 'adas@mageba.in', 4, 9, 2, '9836433305', 1, 0, 0, 0, 0, '', '', 0, '', 0, '', 0, 0, '', '', '', '', '0000-00-00 00:00:00', 'PDAS', '2023-04-14 08:05:39', 'N'),
 (10, 'Sunip', '', 'Barman', 1, '0000-00-00', 1, 5, '', '', '', '', '', '', '', '', '', '', '', 0, '', 0, 0, '', '', 0, 0, 0, 0, '', '', '', '0000-00-00', 0, 'snbarman@mageba.in', 4, 0, NULL, '8697742889', 1, 0, 0, 0, 0, '', '', 0, '', 0, '', 0, 0, '', '', '', '', '0000-00-00 00:00:00', '', '', 'N'),
 (11, 'Sayanti', '', 'Mukherjee', 1, '0000-00-00', 1, 5, '', '', '', '', '', '', '', '', '', '', '', 0, '', 0, 0, '', '', 0, 0, 0, 0, '', '', '', '0000-00-00', 0, 'symukherjee@mageba.in', 4, 0, NULL, '', 1, 0, 0, 0, 0, '', '', 0, '', 0, '', 0, 0, '', '', '', '', '0000-00-00 00:00:00', '', '', 'N'),
 (12, 'Sattwik', '', 'Kar', 1, '0000-00-00', 1, 5, '', '', '', '', '', '', '', '', '', '', '', 0, '', 0, 0, '', '', 0, 0, 0, 0, '', '', '', '0000-00-00', 0, 'sakar@mageba.in', 4, 0, NULL, '7331125891', 1, 0, 0, 0, 0, '', '', 0, '', 0, '', 0, 0, '', '', '', '', '0000-00-00 00:00:00', '', '', 'N'),
@@ -521,7 +525,10 @@ INSERT INTO `n_mast_empuserrole` (`eurid`, `empid`, `user_id`, `rolid`, `crtby`,
 (1, 156, 0, 1, 'PDAS', '2023-04-08 18:18:11', NULL, NULL, 'N'),
 (2, 9, 0, 2, 'PDAS', '2023-04-08 18:19:19', NULL, NULL, 'Y'),
 (5, 18, 0, 1, 'PDAS', '2023-04-08 18:21:55', NULL, NULL, 'N'),
-(6, 18, 0, 3, 'PDAS', '2023-04-08 18:22:18', NULL, NULL, 'N');
+(6, 18, 0, 3, 'PDAS', '2023-04-08 18:22:18', NULL, NULL, 'N'),
+(8, 18, 0, 2, 'PDAS', '2023-04-14 11:26:22', NULL, NULL, 'N'),
+(9, 9, 0, 1, 'PDAS', '2023-04-14 13:25:50', NULL, NULL, 'N'),
+(13, 9, 0, 8, 'PDAS', '2023-04-14 13:26:32', NULL, NULL, 'Y');
 
 -- --------------------------------------------------------
 
@@ -585,7 +592,7 @@ INSERT INTO `n_mast_grade` (`grdid`, `grdnm`, `crtby`, `crton`, `updby`, `updon`
 CREATE TABLE `n_mast_map_menu_role` (
   `rowid` int(5) NOT NULL COMMENT 'ID',
   `nodid` int(5) NOT NULL COMMENT 'Node ID',
-  `depid` int(5) DEFAULT NULL,
+  `depid` int(5) NOT NULL COMMENT 'Department ID',
   `modid` int(5) NOT NULL COMMENT 'Module ID',
   `rolid` int(5) NOT NULL COMMENT 'Role ID',
   `menid` int(5) NOT NULL COMMENT 'Menu ID',
@@ -598,9 +605,16 @@ CREATE TABLE `n_mast_map_menu_role` (
   `crtby` varchar(5) NOT NULL COMMENT 'Created By',
   `crton` datetime NOT NULL DEFAULT current_timestamp() COMMENT 'Created On',
   `updby` varchar(5) DEFAULT NULL COMMENT 'Updated By',
-  `updon` varchar(50) DEFAULT NULL COMMENT 'Updated On',
-  `isdel` char(1) NOT NULL DEFAULT 'N' COMMENT 'Deleted N=NO Y=YES'
+  `updon` varchar(50) DEFAULT NULL COMMENT 'Updated On'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='Map Menus n Roles';
+
+--
+-- Dumping data for table `n_mast_map_menu_role`
+--
+
+INSERT INTO `n_mast_map_menu_role` (`rowid`, `nodid`, `depid`, `modid`, `rolid`, `menid`, `mennm`, `pgacs`, `adacs`, `viacs`, `edacs`, `dlacs`, `crtby`, `crton`, `updby`, `updon`) VALUES
+(1, 2, 7, 14, 1, 5, '', 0, 0, 0, 0, 0, 'PDAS', '2023-04-14 17:09:21', 'PDAS', '2023-04-14 13:39:21'),
+(2, 2, 7, 14, 1, 8, '', 0, 0, 0, 0, 0, 'PDAS', '2023-04-14 17:09:21', 'PDAS', '2023-04-14 13:39:21');
 
 -- --------------------------------------------------------
 
@@ -664,7 +678,10 @@ INSERT INTO `n_mast_menu` (`menid`, `modid`, `mennm`, `pnmid`, `aspnm`, `fsusr`,
 (12, 13, 'Procurement', 1, '../test.php', 0, 'PDAS', '2023-04-12 15:21:02', NULL, NULL, 'N'),
 (13, 13, 'Indent', 12, '', 0, 'PDAS', '2023-04-12 15:21:30', NULL, NULL, 'N'),
 (14, 13, 'Purchase Request', 12, '', 0, 'PDAS', '2023-04-12 15:21:45', NULL, NULL, 'N'),
-(15, 13, 'Request for Quote', 12, '', 0, 'PDAS', '2023-04-12 15:22:07', NULL, NULL, 'N');
+(15, 13, 'Request for Quote', 12, '', 0, 'PDAS', '2023-04-12 15:22:07', NULL, NULL, 'N'),
+(16, 14, 'New', 2, '', 0, 'PDAS', '2023-04-14 09:12:09', NULL, NULL, 'N'),
+(17, 20, 'Head', 6, '', 0, 'PDAS', '2023-04-14 09:39:03', NULL, NULL, 'N'),
+(18, 20, 'test2', 17, '', 0, 'PDAS', '2023-04-14 18:36:18', NULL, NULL, 'N');
 
 -- --------------------------------------------------------
 
@@ -700,14 +717,13 @@ INSERT INTO `n_mast_module` (`modid`, `modnm`, `isact`, `fsusr`, `crtby`, `crton
 (9, 'Drawing Controller', 1, 0, 'PDAS', '0000-00-00 00:00:00', 'PDAS', '08-03-2023 14:23', 'N'),
 (10, 'Correspondence (Letters, MoM, ', 1, 0, 'PDAS', '0000-00-00 00:00:00', NULL, NULL, 'N'),
 (11, 'Document Management System', 1, 0, 'PDAS', '0000-00-00 00:00:00', NULL, NULL, 'N'),
-(12, 'Vouchers', 1, 0, 'PDAS', '0000-00-00 00:00:00', 'PDAS', '2023-04-07 08:02:04', 'N'),
 (13, 'Procurement', 1, 0, 'PDAS', '0000-00-00 00:00:00', NULL, NULL, 'N'),
 (14, 'Accounts', 1, 0, 'PDAS', '0000-00-00 00:00:00', NULL, NULL, 'N'),
 (15, 'IT', 1, 0, 'PDAS', '0000-00-00 00:00:00', NULL, NULL, 'N'),
 (16, 'Human Resources', 1, 0, 'PDAS', '0000-00-00 00:00:00', NULL, NULL, 'N'),
 (17, 'Employee Self Service', 1, 0, 'PDAS', '0000-00-00 00:00:00', NULL, NULL, 'N'),
 (18, 'Quality Control & Test Laborat', 1, 0, 'PDAS', '0000-00-00 00:00:00', NULL, NULL, 'N'),
-(19, 'Safety', 1, 0, 'PDAS', '0000-00-00 00:00:00', NULL, NULL, 'N'),
+(19, 'Safety2', 1, 0, 'PDAS', '0000-00-00 00:00:00', 'PDAS', '2023-04-14 11:49:13', 'N'),
 (20, 'Assets', 1, 0, 'PDAS', '0000-00-00 00:00:00', NULL, NULL, 'N'),
 (21, 'Maintenance', 1, 0, 'PDAS', '0000-00-00 00:00:00', NULL, NULL, 'N'),
 (22, 'Transport', 1, 0, 'PDAS', '0000-00-00 00:00:00', NULL, NULL, 'N'),
@@ -715,41 +731,6 @@ INSERT INTO `n_mast_module` (`modid`, `modnm`, `isact`, `fsusr`, `crtby`, `crton
 (24, 'Analytics', 1, 0, 'PDAS', '0000-00-00 00:00:00', 'PDAS', '08-03-2023 14:36', 'N'),
 (25, 'Reports', 1, 0, 'PDAS', '0000-00-00 00:00:00', NULL, NULL, 'N'),
 (26, 'Dashboard', 1, 0, '', '0000-00-00 00:00:00', '', '', 'N');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `n_mast_role`
---
-
-CREATE TABLE `n_mast_role` (
-  `rolid` int(5) NOT NULL COMMENT 'Role ID',
-  `rolnm` varchar(30) NOT NULL COMMENT 'Role Name',
-  `nodid` int(5) NOT NULL COMMENT 'Node ID',
-  `modid` int(5) NOT NULL COMMENT 'Module ID',
-  `rptto` int(5) NOT NULL COMMENT 'Report to Role Name',
-  `crtby` varchar(5) NOT NULL COMMENT 'Created By',
-  `crton` datetime NOT NULL DEFAULT current_timestamp() COMMENT 'Created On',
-  `updby` varchar(5) DEFAULT NULL COMMENT 'Updated By',
-  `updon` varchar(50) DEFAULT NULL COMMENT 'Updated On',
-  `isdel` char(1) NOT NULL DEFAULT 'N' COMMENT 'Deleted N=NO Y=YES'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='Role Master';
-
---
--- Dumping data for table `n_mast_role`
---
-
-INSERT INTO `n_mast_role` (`rolid`, `rolnm`, `nodid`, `modid`, `rptto`, `crtby`, `crton`, `updby`, `updon`, `isdel`) VALUES
-(1, 'HOD', 2, 14, 1, 'PDAS', '2023-04-07 11:35:21', 'PDAS', '2023-04-07 08:06:40', 'N'),
-(2, 'Manager', 2, 14, 1, 'PDAS', '2023-04-07 11:36:25', NULL, NULL, 'N'),
-(3, 'Accountant', 2, 14, 2, 'PDAS', '2023-04-07 11:37:25', NULL, NULL, 'N'),
-(4, 'Account Executive', 2, 14, 2, 'PDAS', '2023-04-07 11:37:49', NULL, NULL, 'N'),
-(5, 'HOD', 3, 13, 0, 'PDAS', '2023-04-07 11:42:39', NULL, NULL, 'N'),
-(6, 'Manager', 3, 13, 5, 'PDAS', '2023-04-07 11:44:58', NULL, NULL, 'N'),
-(7, 'Production Manager', 3, 13, 6, 'PDAS', '2023-04-07 11:46:41', NULL, NULL, 'N'),
-(8, 'Production Executive', 3, 13, 7, 'PDAS', '2023-04-07 11:47:24', NULL, NULL, 'N'),
-(9, 'QA/QC Manager', 3, 13, 6, 'PDAS', '2023-04-07 11:48:07', NULL, NULL, 'N'),
-(10, 'QA/QC Executive', 3, 13, 9, 'PDAS', '2023-04-07 11:48:43', NULL, NULL, 'N');
 
 -- --------------------------------------------------------
 
@@ -776,7 +757,8 @@ INSERT INTO `n_mast_role_name` (`rolid`, `rolnm`, `crtby`, `crton`, `updby`, `up
 (2, 'Manager', 'PDAS', '2023-04-07 16:54:21', NULL, NULL, 'N'),
 (3, 'Staff', 'PDAS', '2023-04-07 16:54:29', NULL, NULL, 'N'),
 (4, 'Super User', 'PDAS', '2023-04-07 16:54:41', NULL, NULL, 'N'),
-(8, 'Test Role 1', 'PDAS', '2023-04-08 11:32:48', 'PDAS', '2023-04-08 08:29:39', 'N');
+(8, 'Test Role 1', 'PDAS', '2023-04-08 11:32:48', 'PDAS', '2023-04-14 11:27:48', 'Y'),
+(15, 'Test Role1', 'PDAS', '2023-04-14 16:21:26', 'PDAS', '2023-04-14 12:52:00', 'Y');
 
 -- --------------------------------------------------------
 
@@ -910,7 +892,10 @@ CREATE TABLE `n_mast_user` (
 
 INSERT INTO `n_mast_user` (`user_id`, `user_nm`, `user_pwd`, `empid`, `exprdt`, `dev1_id`, `dev2_id`, `crtby`, `crton`, `updby`, `updon`, `isdel`) VALUES
 (1, 'adas', 'trtu', 9, '1970-01-01', '', '', 'PDAS', '2023-04-08 16:44:14', NULL, NULL, 'N'),
-(2, 'adfdg', 'werwqer', 80, '1970-01-01', '', '', 'PDAS', '2023-04-08 16:44:25', NULL, NULL, 'N');
+(2, 'adfdg', 'werwqer', 80, '1970-01-01', '', '', 'PDAS', '2023-04-08 16:44:25', NULL, NULL, 'N'),
+(7, 'adas5', 'kjhkjh', 9, '1970-01-01', '', '', 'PDAS', '2023-04-14 15:09:34', 'PDAS', '2023-04-14 11:40:01', 'Y'),
+(10, 'asinha', 'wqe23e4r21', 25, '1970-01-01', 'sadasd', 'asdcasf', 'PDAS', '2023-04-14 15:50:54', 'PDAS', '2023-04-14 12:21:05', 'Y'),
+(11, 'agh', 'er234', 67, '1970-01-01', 'asdf', 'wefrqwe', 'PDAS', '2023-04-14 15:53:53', 'PDAS', '2023-04-14 12:24:10', 'Y');
 
 --
 -- Indexes for dumped tables
@@ -934,13 +919,15 @@ ALTER TABLE `mast_nodtyp`
 -- Indexes for table `n_mast_bank`
 --
 ALTER TABLE `n_mast_bank`
-  ADD PRIMARY KEY (`bnkid`);
+  ADD PRIMARY KEY (`bnkid`),
+  ADD UNIQUE KEY `bnknm` (`bnknm`);
 
 --
 -- Indexes for table `n_mast_bdlgrp`
 --
 ALTER TABLE `n_mast_bdlgrp`
-  ADD PRIMARY KEY (`blgid`);
+  ADD PRIMARY KEY (`blgid`),
+  ADD UNIQUE KEY `blgnm` (`blgnm`);
 
 --
 -- Indexes for table `n_mast_city`
@@ -953,19 +940,22 @@ ALTER TABLE `n_mast_city`
 -- Indexes for table `n_mast_country`
 --
 ALTER TABLE `n_mast_country`
-  ADD PRIMARY KEY (`cntid`);
+  ADD PRIMARY KEY (`cntid`),
+  ADD UNIQUE KEY `cntnm` (`cntnm`);
 
 --
 -- Indexes for table `n_mast_designation`
 --
 ALTER TABLE `n_mast_designation`
-  ADD PRIMARY KEY (`desigid`);
+  ADD PRIMARY KEY (`desigid`),
+  ADD UNIQUE KEY `designm` (`designm`);
 
 --
 -- Indexes for table `n_mast_desk`
 --
 ALTER TABLE `n_mast_desk`
-  ADD PRIMARY KEY (`dskid`);
+  ADD PRIMARY KEY (`dskid`),
+  ADD UNIQUE KEY `dsknm` (`dsknm`);
 
 --
 -- Indexes for table `n_mast_emp`
@@ -989,13 +979,15 @@ ALTER TABLE `n_mast_empuserrole`
 -- Indexes for table `n_mast_gender`
 --
 ALTER TABLE `n_mast_gender`
-  ADD PRIMARY KEY (`genid`);
+  ADD PRIMARY KEY (`genid`),
+  ADD UNIQUE KEY `gennm` (`gennm`);
 
 --
 -- Indexes for table `n_mast_grade`
 --
 ALTER TABLE `n_mast_grade`
-  ADD PRIMARY KEY (`grdid`);
+  ADD PRIMARY KEY (`grdid`),
+  ADD UNIQUE KEY `grdnm` (`grdnm`);
 
 --
 -- Indexes for table `n_mast_map_menu_role`
@@ -1003,6 +995,7 @@ ALTER TABLE `n_mast_grade`
 ALTER TABLE `n_mast_map_menu_role`
   ADD PRIMARY KEY (`rowid`),
   ADD KEY `nodid` (`nodid`),
+  ADD KEY `depid` (`depid`),
   ADD KEY `modid` (`modid`),
   ADD KEY `rolid` (`rolid`),
   ADD KEY `menid` (`menid`);
@@ -1011,7 +1004,8 @@ ALTER TABLE `n_mast_map_menu_role`
 -- Indexes for table `n_mast_marlsts`
 --
 ALTER TABLE `n_mast_marlsts`
-  ADD PRIMARY KEY (`mlsid`);
+  ADD PRIMARY KEY (`mlsid`),
+  ADD UNIQUE KEY `mlsnm` (`mlsnm`);
 
 --
 -- Indexes for table `n_mast_menu`
@@ -1025,15 +1019,6 @@ ALTER TABLE `n_mast_menu`
 ALTER TABLE `n_mast_module`
   ADD PRIMARY KEY (`modid`),
   ADD UNIQUE KEY `modnm` (`modnm`);
-
---
--- Indexes for table `n_mast_role`
---
-ALTER TABLE `n_mast_role`
-  ADD PRIMARY KEY (`rolid`),
-  ADD UNIQUE KEY `unq_rl` (`rolnm`,`nodid`,`modid`),
-  ADD KEY `modid` (`modid`),
-  ADD KEY `nodid` (`nodid`);
 
 --
 -- Indexes for table `n_mast_role_name`
@@ -1085,7 +1070,7 @@ ALTER TABLE `n_mast_user`
 -- AUTO_INCREMENT for table `mast_node`
 --
 ALTER TABLE `mast_node`
-  MODIFY `nodid` int(5) NOT NULL AUTO_INCREMENT COMMENT 'Node ID', AUTO_INCREMENT=23;
+  MODIFY `nodid` int(5) NOT NULL AUTO_INCREMENT COMMENT 'Node ID', AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `mast_nodtyp`
@@ -1121,7 +1106,7 @@ ALTER TABLE `n_mast_country`
 -- AUTO_INCREMENT for table `n_mast_designation`
 --
 ALTER TABLE `n_mast_designation`
-  MODIFY `desigid` int(5) NOT NULL AUTO_INCREMENT COMMENT 'Role ID', AUTO_INCREMENT=12;
+  MODIFY `desigid` int(5) NOT NULL AUTO_INCREMENT COMMENT 'Role ID', AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `n_mast_desk`
@@ -1139,7 +1124,7 @@ ALTER TABLE `n_mast_emp`
 -- AUTO_INCREMENT for table `n_mast_empuserrole`
 --
 ALTER TABLE `n_mast_empuserrole`
-  MODIFY `eurid` int(5) NOT NULL AUTO_INCREMENT COMMENT 'Emp_User_Role ID', AUTO_INCREMENT=7;
+  MODIFY `eurid` int(5) NOT NULL AUTO_INCREMENT COMMENT 'Emp_User_Role ID', AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `n_mast_gender`
@@ -1157,7 +1142,7 @@ ALTER TABLE `n_mast_grade`
 -- AUTO_INCREMENT for table `n_mast_map_menu_role`
 --
 ALTER TABLE `n_mast_map_menu_role`
-  MODIFY `rowid` int(5) NOT NULL AUTO_INCREMENT COMMENT 'ID';
+  MODIFY `rowid` int(5) NOT NULL AUTO_INCREMENT COMMENT 'ID', AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `n_mast_marlsts`
@@ -1169,25 +1154,19 @@ ALTER TABLE `n_mast_marlsts`
 -- AUTO_INCREMENT for table `n_mast_menu`
 --
 ALTER TABLE `n_mast_menu`
-  MODIFY `menid` int(5) NOT NULL AUTO_INCREMENT COMMENT 'Menu ID', AUTO_INCREMENT=16;
+  MODIFY `menid` int(5) NOT NULL AUTO_INCREMENT COMMENT 'Menu ID', AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `n_mast_module`
 --
 ALTER TABLE `n_mast_module`
-  MODIFY `modid` int(5) NOT NULL AUTO_INCREMENT COMMENT 'Module ID', AUTO_INCREMENT=27;
-
---
--- AUTO_INCREMENT for table `n_mast_role`
---
-ALTER TABLE `n_mast_role`
-  MODIFY `rolid` int(5) NOT NULL AUTO_INCREMENT COMMENT 'Role ID', AUTO_INCREMENT=15;
+  MODIFY `modid` int(5) NOT NULL AUTO_INCREMENT COMMENT 'Module ID', AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `n_mast_role_name`
 --
 ALTER TABLE `n_mast_role_name`
-  MODIFY `rolid` int(5) NOT NULL AUTO_INCREMENT COMMENT 'Designation ID', AUTO_INCREMENT=9;
+  MODIFY `rolid` int(5) NOT NULL AUTO_INCREMENT COMMENT 'Designation ID', AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `n_mast_shift`
@@ -1217,7 +1196,7 @@ ALTER TABLE `n_mast_type`
 -- AUTO_INCREMENT for table `n_mast_user`
 --
 ALTER TABLE `n_mast_user`
-  MODIFY `user_id` int(5) NOT NULL AUTO_INCREMENT COMMENT 'User ID', AUTO_INCREMENT=5;
+  MODIFY `user_id` int(5) NOT NULL AUTO_INCREMENT COMMENT 'User ID', AUTO_INCREMENT=12;
 
 --
 -- Constraints for dumped tables
@@ -1256,16 +1235,10 @@ ALTER TABLE `n_mast_empuserrole`
 --
 ALTER TABLE `n_mast_map_menu_role`
   ADD CONSTRAINT `n_mast_map_menu_role_ibfk_1` FOREIGN KEY (`nodid`) REFERENCES `mast_node` (`nodid`),
-  ADD CONSTRAINT `n_mast_map_menu_role_ibfk_2` FOREIGN KEY (`modid`) REFERENCES `n_mast_module` (`modid`),
-  ADD CONSTRAINT `n_mast_map_menu_role_ibfk_3` FOREIGN KEY (`rolid`) REFERENCES `n_mast_role` (`rolid`),
-  ADD CONSTRAINT `n_mast_map_menu_role_ibfk_4` FOREIGN KEY (`menid`) REFERENCES `n_mast_menu` (`menid`);
-
---
--- Constraints for table `n_mast_role`
---
-ALTER TABLE `n_mast_role`
-  ADD CONSTRAINT `n_mast_role_ibfk_1` FOREIGN KEY (`modid`) REFERENCES `n_mast_module` (`modid`),
-  ADD CONSTRAINT `n_mast_role_ibfk_2` FOREIGN KEY (`nodid`) REFERENCES `mast_node` (`nodid`);
+  ADD CONSTRAINT `n_mast_map_menu_role_ibfk_2` FOREIGN KEY (`depid`) REFERENCES `mast_node` (`nodid`),
+  ADD CONSTRAINT `n_mast_map_menu_role_ibfk_3` FOREIGN KEY (`modid`) REFERENCES `n_mast_module` (`modid`),
+  ADD CONSTRAINT `n_mast_map_menu_role_ibfk_4` FOREIGN KEY (`rolid`) REFERENCES `n_mast_role_name` (`rolid`),
+  ADD CONSTRAINT `n_mast_map_menu_role_ibfk_5` FOREIGN KEY (`menid`) REFERENCES `n_mast_menu` (`menid`);
 
 --
 -- Constraints for table `n_mast_state`

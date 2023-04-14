@@ -27,7 +27,6 @@ $v_seedacs='';
 $v_sedlacs='';
 $v_dispr='';
 $v_disp='';
-$v_depid='';
 ?>
 <div class="card mb-12">
   <div class="shadow p-6 card-body">
@@ -52,12 +51,13 @@ $v_depid='';
       </thead>
       <tbody class=".cls_menu_map_body">
         <?php
-        $v_qs="SELECT * FROM `n_mast_map_menu_role`
+        echo $v_qs="SELECT * FROM `n_mast_map_menu_role`
                 WHERE `nodid` = '$v_nodid' 
                 AND `modid` = '$v_modid'
                 AND `rolid` = '$v_rolid'
                 AND `depid` = '$v_depid';";
-          $a_rs=mysqli_query($con,$v_qs);
+          $a_rs=mysqli_query($con,$v_qs)or
+          die('Error:'.mysqli_error($con));
           foreach($a_rs as $a_hs){
           $v_menid=$a_hs['menid'];
               // // Get Menu Name

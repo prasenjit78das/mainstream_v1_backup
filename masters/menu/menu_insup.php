@@ -107,8 +107,7 @@
           }
         }
         else{
-          //echo $query.'<br/>';
-          die(mysqli_error($con));
+          f_error($con);
         }
       }catch(mysqli_sql_exception $e){
       //echo '<br>Error-'.mysqli_error($con);

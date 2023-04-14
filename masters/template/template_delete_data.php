@@ -24,17 +24,11 @@
     },
     // Add more data for each form field
     success: function(response) {//alert(response);
-      if(response>0){ 
+      if(response!=''){ 
         $('#div_warn').show(); 
-        $('input[name="su_del"]').hide();
-        if(response==1062){
-          $('#alert-text').html('Duplicate X-Name exists! Cannot proceed.');
-        }else if(response==1451){
-          $('#alert-text').html('Child exists! Cannot delete.');
-        }else if(response==9999){
-          $('#alert-text').html('Deletion not allowed, template(s) exists reporting to this template');
-        }  
-      }else if(response==0){
+        $('input[name="su_del"]').hide(); 
+        $('#alert-text').html(response);
+      }else if(response==''){
         //close the modal and refresh the table
         $('#insetModal').modal('hide');
         refreshTable();

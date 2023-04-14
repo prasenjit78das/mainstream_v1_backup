@@ -32,13 +32,9 @@ if(mode=='edt'){///update data
     // Add more data for each form field
     success: function(response) {
       //alert(response);
-      if(response!=''){
+      if(response!=''){ 
         $('#div_warn').show();
-        if(response==1062){
-          $('#alert-text').html('Duplicate Emp-User-Role exists! Cannot proceed.');
-        }else{
-          $('#alert-text').html(response);
-        }
+        $('#alert-text').html(response); 
       }
       else if(response==''){
       // Update was successful, close the modal and refresh the table

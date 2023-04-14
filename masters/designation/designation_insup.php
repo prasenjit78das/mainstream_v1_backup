@@ -39,25 +39,11 @@
     elseif(isset($_POST['su_del'])){
     //echo 'delete designation name (Soft delete)';
       $v_desigid = mysqli_real_escape_string($con, $_POST['desigid']);
-      // //check if the temeid to be deleted is associated with any 'Report to Role' entry
-      // $qmattem = "SELECT * FROM `n_mast_` WHERE `rptto` ='$v_rolid'";
-      // $qmatroledata=mysqli_query($con,$qmatrole);
-      //  $v_row_cnt = mysqli_num_rows($qmatroledata);
-      //   if($v_row_cnt==0){ 
-      //     //Construct the Delete query
-      //     $v_query = "DELETE FROM `n_mast_role` 
-      //                    WHERE `rolid` = '$v_rolid';";
-      //    }else{
-      //     echo '9999';
-      //     mysqli_close($con);
-      //     exit;
-      //   }
       $v_query = "UPDATE `n_mast_designation` SET `isdel` = 'Y' 
                                           WHERE `desigid` = '$v_desigid';";
     }
 // Execute the query
 try{
- 
     mysqli_autocommit($con,false);
     if(mysqli_query($con, $v_query)){
       if($v_ermgs==''){
@@ -66,15 +52,12 @@ try{
       elseif($v_ermgs!=''){
         echo $v_ermgs;
       }
-      //echo '<br/>'.$v_query.'<br/>';
     }
     else{
-      die(mysqli_errno($con));
-        }
-
+      f_error($con);
+    }
 }catch(mysqli_sql_exception $e){
-  //die and show error no
-  die(mysqli_errno($con));
+  f_error($con);
 }
 Mysqli_rollback($con);
 // Close the connection

@@ -24,7 +24,7 @@
       $v_errno= mysqli_errno($con);
       if($v_errno==1451){///Cannot delete or update a parent row:
         // a foreign key constraint fails
-        $v_msg='Foreign key connectivity exists, cannot delete!';
+        $v_msg='Dependent element exists! cannot proceed.';
       }else{$v_msg='';}
         //echo $v_msg;
     }

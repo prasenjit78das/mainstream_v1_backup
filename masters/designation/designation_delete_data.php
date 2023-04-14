@@ -5,22 +5,22 @@
     if(mode=='del'){///delete data
     $('#bu_btn').show().val('Save')
                        .attr({'onclick':'f_del_conf("div_alert")'});
-    $('.modal-title').html('Delete Emp-User-Role');
+    $('.modal-title').html('Delete Designation');
     fetchRecord(id);
-    $('#se_empid,#se_user_id,#se_rolid').attr('disabled',true);
+    $('#te_designm').attr('disabled',true);
   }else{};
 }
-//'onclick':'deleteRecord()',
-  function deleteRecord() {
+///
+function deleteRecord() {
   // Get the values of the form fields
-  var v_eurid = $('#hi_eurid').val();
+  var v_desigid = $('#hi_desigid').val();
   var v_bu_btn = $('#bu_btn').val();
   // Make an AJAX request to the server-side script
   $.ajax({
-    url: 'empUserRole_insup.php',
+    url: 'designation_insup.php',
     type: 'post',
     data: {
-      eurid: v_eurid,
+      desigid: v_desigid,
       su_del: v_bu_btn,
     },
     // Add more data for each form field

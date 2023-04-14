@@ -116,7 +116,7 @@
         die(mysqli_error($con));
         mysqli_commit($con);
         $v_updategoto= "menu_role_master.php";
-        header(sprintf("Location: %s" ,$v_updategoto));
+        //header(sprintf("Location: %s" ,$v_updategoto));
 
       } catch (mysqli_sql_exception $e) {
         $v_msg=mysqli_error($con);

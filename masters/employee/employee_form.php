@@ -747,7 +747,7 @@ function f_set_selection($v_cond, $v_val){
 function f_fetch_bu_dept(get_id,append_id,selct) {// alert('clicked');
   var id = $('#'+get_id).val(); //alert(id);
   if(selct=='none'){}else{};
-  alert(selct);
+  //alert(selct);
 // Make an AJAX request to the server-side script to 
 $.ajax({
   url: '../../assets/employee_bu_dept.php',

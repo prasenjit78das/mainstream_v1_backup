@@ -11,6 +11,7 @@ mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
     `n_mast_map_menu_role` (
       `rowid` INT(5) NOT NULL AUTO_INCREMENT COMMENT 'ID',
       `nodid` INT(5) NOT NULL COMMENT 'Node ID' ,
+      `depid` INT(5) NOT NULL COMMENT 'Department ID' ,
       `modid` INT(5) NOT NULL COMMENT 'Module ID' ,
       `rolid` INT(5) NOT NULL COMMENT 'Role ID' ,
       `menid` INT(5) NOT NULL COMMENT 'Menu ID' ,
@@ -26,8 +27,9 @@ mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
       `updon` VARCHAR(50) DEFAULT NULL COMMENT 'Updated On',
       PRIMARY KEY (`rowid`),
       FOREIGN KEY (`nodid`) REFERENCES mast_node(`nodid`),
+      FOREIGN KEY (`depid`) REFERENCES mast_node(`nodid`),
       FOREIGN KEY (`modid`) REFERENCES n_mast_module(`modid`),
-      FOREIGN KEY (`rolid`) REFERENCES n_mast_role(`rolid`),
+      FOREIGN KEY (`rolid`) REFERENCES n_mast_role_name(`rolid`),
       FOREIGN KEY (`menid`) REFERENCES n_mast_menu(`menid`)
       )ENGINE = InnoDB COMMENT='Map Menus n Roles';";
     try {

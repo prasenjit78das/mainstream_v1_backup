@@ -120,7 +120,7 @@ $v_disp='';
        var v_depid=$('#se_depid').val();
        if((v_nodid!='')&&(v_modid!='')&&(v_rolid!='')&&(v_depid!='')){
         var txt = v_nodid+'~'+v_modid+'~'+v_rolid+'~'+v_depid;
-        //alert(txt);
+        alert(txt);
         $.post('menu_role_getiddata.php', {qs: txt}, function(result){
           //alert(result);
           $("#div_tree_view").html(result);

@@ -31,7 +31,7 @@ try {
   <div class="col-md-8">
     <div class="input-group p-2 input-group-sm d-flex justify-content-end"
       data-bs-toggle='modal' data-bs-target='#insertModal' 
-      onclick="insup_data(0,'ins')">
+      onclick="insert_data(0,'ins')">
     <span class="input-group-text text-light bg-dark">Add Designation</span>
     <button type='button' class='btn btn-light border border-3' >+</button>
   </div>
@@ -70,11 +70,11 @@ try {
               echo '<td class="td_text">'.$tritems["crtby"].'</td>';
               echo '<td class="td_text">'.$tritems["crton"].'</td>';
               echo '<td class="td_act">';?>
-                  <span onclick="insup_data(<?=$tritems['desigid'];?>,'edt')"
+                  <span onclick="update_data(<?=$tritems['desigid'];?>,'edt')"
                    data-bs-toggle="modal" data-bs-target="#insertModal">
                     <i class="bi-pencil-square"></i>
                   </span>&nbsp;&nbsp;&nbsp;&nbsp;
-                  <span onclick="insup_data(<?=$tritems['desigid'];?>,'del')"
+                  <span onclick="delete_data(<?=$tritems['desigid'];?>,'del')"
                    data-bs-toggle="modal" data-bs-target="#insertModal">
                     <i class="bi-dash-circle"></i>
                   </span>
@@ -132,7 +132,7 @@ function f_get_nm_from_id($v_id, $a_data)
         </form>
       </div>
       <!-- Modal footer -->
-      <div class='modal-footer'>
+      <div class='modal-footer' id='div_alert'>
         <div class="container mt-3" id="div_warn" style="display:none;">
           <div class="alert alert-warning">
               <strong id="alert-text">Deletion not allowed, role(s) exists reporting to this role</strong>
@@ -145,184 +145,14 @@ function f_get_nm_from_id($v_id, $a_data)
 </div>
 
 <script>
-  function insup_data(id,mode){ //'
-  //alert(mode)
-  if(mode=='ins'){///insert data
-    var blnk="";
-    $('#te_designm,#hi_desigid').val(blnk)
-                .removeAttr('disabled');
-    $('#bu_btn').show().val('Save')
-                .attr({'onclick':'insertRecord()','name':'su_add'});
-    $('.modal-title').html('Add Designation');
-  }
-  else if(mode=='edt'){///update data
-    $('#te_designm').removeAttr('disabled');
-    $('#bu_btn').show().val('Save')
-                .attr({'onclick':'updateRecord()','name':'su_edt'});
-    $('.modal-title').html('Edit Designation');
-    fetchRecord(id);
-  }else if(mode=='del'){///delete data
-    $('#bu_btn').show().val('Save')
-                .attr({'onclick':'deleteRecord()','name':'su_del'});
-    $('.modal-title').html('Delete Designation');
-    fetchRecord(id);
-    $('#te_designm').attr('disabled',true);
-  }
-  $('#div_warn').hide();
-}
-
-  function insertRecord() {
-  //alert('Clicked');
-  // Get the values of the form fields
-  var v_designm = $('#te_designm').val();
-  var v_bu_btn = $('#bu_btn').val();
-   // Add more variables for each form field
-if((v_designm!='')){
-  $('#div_warn').hide();
-  // Make an AJAX request to the server-side script
-  $.ajax({
-    url: 'designation_insup.php',
-    type: 'post',
-    data: {
-      designm: v_designm,
-      su_add: v_bu_btn,
-    },
-    // Add more data for each form field
-    success: function(response) {
-      //alert(response);
-      if(response!=''){
-        $('#div_warn').show();
-        if(response==1062){
-          $('#alert-text').html('Duplicate Designation exists! Cannot proceed.');
-        }else{
-          $('#alert-text').html(response);
-        }
-      }
-      else if(response==''){
-      // Insert was successful, close the modal and refresh the table
-      $('#insertModal').modal('hide');
-      refreshTable();
-      }
-    },
-    error: function(response) {
-      // Insert failed, show an error message
-      alert('Insert failed');
-    }
-  });
-  }else{
-    $('#div_warn').show();
-    $('#alert-text').html('Please fill up mandatory fields !!');
-  }
-}
-/////
 function refreshTable() {
   //alert('refresh');
   location.reload();
 }
-/////
-function fetchRecord(id) {  //alert(id);
-  // Make an AJAX request to the server-side script to 
-  //get the data for the selected record
-  $.ajax({
-    url: 'designation_getiddata.php',
-    type: 'get',
-    dataType: 'json',
-    data: {desigid: id},
-    success: function(response) { //alert(response);
-      //alert('test');
-      // The request was successful, update the form with the returned data
-      $('#insertModal').modal('show');
-      $('#te_designm').val(response[0].designm);
-      $('#hi_desigid').val(id);              
-      // Add more form fields for each column in the table
-      //alert('ttt');
-    },
-    error: function(response) {
-      // The request failed, show an error message
-      alert('Error: '+response.responseText);
-    }
-  });
-}
-///
-function updateRecord() {
-  // Get the values of the form fields
-  var v_desigid = $('#hi_desigid').val();
-  var v_designm = $('#te_designm').val();
-  var v_bu_btn = $('#bu_btn').val();
-  // Make an AJAX request to the server-side script
-  if((v_designm!='')){
-  $.ajax({
-    url: 'designation_insup.php',
-    type: 'post',
-    data: {
-      desigid: v_desigid,
-      designm: v_designm,
-      su_edt: v_bu_btn,
-    },
-    // Add more data for each form field
-    success: function(response) {
-      //alert(response);
-      if(response!=''){
-        $('#div_warn').show();
-        if(response==1062){
-          $('#alert-text').html('Duplicate Designation exists! Cannot proceed.');
-        }else{
-          $('#alert-text').html(response);
-        }
-      }
-      else if(response==''){
-      // Update was successful, close the modal and refresh the table
-      $('#insertModal').modal('hide');
-      refreshTable();
-      }
-    },
-    error: function(response) {
-      // Update failed, show an error message
-      alert('Update failed');
-    }
-   });
-  }else{
-    $('#div_warn').show();
-    $('#alert-text').html('Please fill up mandatory fields !!');
-  }
-}
-///
-function deleteRecord() {
-  // Get the values of the form fields
-  var v_desigid = $('#hi_desigid').val();
-  var v_bu_btn = $('#bu_btn').val();
-  // Make an AJAX request to the server-side script
-  $.ajax({
-    url: 'designation_insup.php',
-    type: 'post',
-    data: {
-      desigid: v_desigid,
-      su_del: v_bu_btn,
-    },
-    // Add more data for each form field
-    success: function(response) {//alert(response);
-      if(response>0){ 
-        $('#div_warn').show(); 
-        $('input[name="su_del"]').hide();
-        if(response==1062){
-          $('#alert-text').html('Duplicate Designation exists! Cannot proceed.');
-        }else if(response==1451){
-          $('#alert-text').html('Child exists! Cannot delete.');
-        }else if(response==9999){
-          $('#alert-text').html('Deletion not allowed, designation(s)');
-        }  
-      }else if(response==0){
-        //close the modal and refresh the table
-        $('#insetModal').modal('hide');
-        refreshTable();
-      }
-    },
-    error: function(response) {
-      // Update failed, show an error message
-      alert('Delete failed');
-    }
-  });
-}
-
 </script>
-
+<?php 
+ include('designation_insert_data.php');
+ include('designation_fetch_data.php');
+ include('designation_update_data.php');
+ include('designation_delete_data.php');
+ ?>

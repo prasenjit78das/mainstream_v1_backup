@@ -34,7 +34,7 @@ $a_emp_array = json_decode($json_emp, true);
   <div class="col-md-8">
     <div class="input-group p-2 input-group-sm d-flex justify-content-end"
       data-bs-toggle='modal' data-bs-target='#insertModal' 
-      onclick="insup_data(0,'ins')">
+      onclick="insert_data(0,'ins')">
     <span class="input-group-text text-light bg-dark">Add User</span>
     <button type='button' class='btn btn-light border border-3' >+</button>
   </div>
@@ -90,11 +90,11 @@ $a_emp_array = json_decode($json_emp, true);
               echo '<td class="td_text">'.$triuses["crtby"].'</td>';
               echo '<td class="td_text">'.$triuses["crton"].'</td>';
               echo '<td class="td_act">';?>
-                  <span onclick="insup_data(<?=$triuses['user_id'];?>,'edt')"
+                  <span onclick="update_data(<?=$triuses['user_id'];?>,'edt')"
                    data-bs-toggle="modal" data-bs-target="#insertModal">
                     <i class="bi-pencil-square"></i>
                   </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <span onclick="insup_data(<?=$triuses['user_id'];?>,'del')"
+                  <span onclick="delete_data(<?=$triuses['user_id'];?>,'del')"
                    data-bs-toggle="modal" data-bs-target="#insertModal">
                     <i class="bi-dash-circle"></i>
                   </span>
@@ -200,7 +200,7 @@ function f_get_nm_from_id($v_id, $a_data)
         </form>
       </div>
       <!-- Modal footer -->
-      <div class='modal-footer'>
+      <div class='modal-footer' id='div_alert'>
         <div class="container mt-3" id="div_warn" style="display:none;">
           <div class="alert alert-warning">
               <strong id="alert-text">Deletion not allowed, role(s) exists reporting to this role</strong>
@@ -213,204 +213,16 @@ function f_get_nm_from_id($v_id, $a_data)
 </div>
 
 <script>
-  function insup_data(id,mode){ //'
-  //alert(mode)
-  if(mode=='ins'){///insert data
-    var blnk="";
-    $('#se_empid,#pa_user_pwd,#te_user_nm,#hi_user_id,#te_dev1_id,#te_dev2_id').val(blnk)
-                .removeAttr('disabled');
-    $('#bu_btn').show().val('Save')
-                .attr({'onclick':'insertRecord()','name':'su_add'});
-    $('.modal-title').html('Add User');
-  }
-  else if(mode=='edt'){///update data
-    $('#se_empid,#pa_user_pwd,#te_user_nm,#hi_user_id,#te_dev1_id,#te_dev2_id').removeAttr('disabled');
-    $('#bu_btn').show().val('Save')
-                .attr({'onclick':'updateRecord()','name':'su_edt'});
-    $('.modal-title').html('Edit User');
-    fetchRecord(id);
-  }else if(mode=='del'){///delete data
-    $('#bu_btn').show().val('Save')
-                .attr({'onclick':'deleteRecord()','name':'su_del'});
-    $('.modal-title').html('Delete User');
-    fetchRecord(id);
-    $('#se_empid,#pa_user_pwd,#te_user_nm,#hi_user_id,#te_dev1_id,#te_dev2_id').attr('disabled',true);
-  }
-  $('#div_warn').hide();
-}
-
-  function insertRecord() {
-  //alert('Clicked');
-  // Get the values of the form fields
-  var v_user_nm = $('#te_user_nm').val();
-  var v_user_pwd = $('#pa_user_pwd').val();
-  var v_empid = $('#se_empid').val();
-  var v_dev1_id = $('#te_dev1_id').val();
-  var v_dev2_id = $('#te_dev2_id').val();
-  var v_bu_btn = $('#bu_btn').val();
-   // Add more variables for each form field
-if((v_user_nm!='')&&(v_user_pwd!='')&&(v_empid!='')){
-  $('#div_warn').hide();
-  // Make an AJAX request to the server-side script
-  $.ajax({
-    url: 'user_insup.php',
-    type: 'post',
-    data: {
-      user_nm: v_user_nm,
-      user_pwd: v_user_pwd,
-      empid: v_empid,
-      dev1_id: v_dev1_id,
-      dev2_id: v_dev2_id,
-      su_add: v_bu_btn,
-    },
-    // Add more data for each form field
-    success: function(response) {
-      //alert(response);
-      if(response!=''){
-        $('#div_warn').show();
-        if(response==1062){
-          $('#alert-text').html('Duplicate User exists! Cannot proceed.');
-        }else{
-          $('#alert-text').html(response);
-        }
-      }
-      else if(response==''){
-      // Insert was successful, close the modal and refresh the table
-      $('#insertModal').modal('hide');
-      refreshTable();
-      }
-    },
-    error: function(response) {
-      // Insert failed, show an error message
-      alert('Insert failed');
-    }
-  });
-  }else{
-    $('#div_warn').show();
-    $('#alert-text').html('Please fill up mandatory fields !!');
-  }
-}
 /////
 function refreshTable() {
   //alert('refresh');
   location.reload();
 }
 /////
-function fetchRecord(id) {  //alert(id);
-  // Make an AJAX request to the server-side script to 
-  //get the data for the selected record
-  $.ajax({
-    url: 'user_getiddata.php',
-    type: 'get',
-    dataType: 'json',
-    data: {user_id: id},
-    success: function(response) { //alert(response);
-      //alert('test');
-      // The request was successful, update the form with the returned data
-      $('#insertModal').modal('show');
-      $('#te_user_nm').val(response[0].user_nm);
-      $('#te_user_pwd').val(response[0].user_pwd);
-      $('#se_empid').val(response[0].empid);
-      $('#te_dev1_id').val(response[0].dev1_id);
-      $('#te_dev2_id').val(response[0].dev2_id);
-      $('#hi_user_id').val(id);              
-      // Add more form fields for each column in the table
-      //alert('ttt');
-    },
-    error: function(response) {
-      // The request failed, show an error message
-      alert('Error: '+response.responseText);
-    }
-  });
-}
-///
-function updateRecord() {
-  // Get the values of the form fields
-  var v_user_id = $('#hi_user_id').val();
-  var v_user_nm = $('#te_user_nm').val();
-  var v_user_pwd = $('#pa_user_pwd').val();
-  var v_dev1_id = $('#te_dev1_id').val();
-  var v_dev2_id = $('#te_dev2_id').val();
-  var v_empid = $('#se_empid').val();
-  var v_bu_btn = $('#bu_btn').val();
-  // Make an AJAX request to the server-side script
-  if((v_user_nm!='')&&(v_user_pwd!='')&&(v_empid!='')){
-  $.ajax({
-    url: 'user_insup.php',
-    type: 'post',
-    data: {
-      user_id: v_user_id,
-      user_nm: v_user_nm,
-      user_pwd: v_user_pwd,
-      empid:v_empid,
-      dev1_id: v_dev1_id,
-      dev2_id: v_dev2_id,
-      su_edt: v_bu_btn,
-    },
-    // Add more data for each form field
-    success: function(response) {
-      //alert(response);
-      if(response!=''){
-        $('#div_warn').show();
-        if(response==1062){
-          $('#alert-text').html('Duplicate User exists! Cannot proceed.');
-        }else{
-          $('#alert-text').html(response);
-        }
-      }
-      else if(response==''){
-      // Update was successful, close the modal and refresh the table
-      $('#insertModal').modal('hide');
-      refreshTable();
-      }
-    },
-    error: function(response) {
-      // Update failed, show an error message
-      alert('Update failed');
-    }
-   });
-  }else{
-    $('#div_warn').show();
-    $('#alert-text').html('Please fill up mandatory fields !!');
-  }
-}
-///
-function deleteRecord() {
-  // Get the values of the form fields
-  var v_user_id = $('#hi_user_id').val();
-  var v_bu_btn = $('#bu_btn').val();
-  // Make an AJAX request to the server-side script
-  $.ajax({
-    url: 'user_insup.php',
-    type: 'post',
-    data: {
-      user_id: v_user_id,
-      su_del: v_bu_btn,
-    },
-    // Add more data for each form field
-    success: function(response) {//alert(response);
-      if(response>0){ 
-        $('#div_warn').show(); 
-        $('input[name="su_del"]').hide();
-        if(response==1062){
-          $('#alert-text').html('Duplicate User exists! Cannot proceed.');
-        }else if(response==1451){
-          $('#alert-text').html('Child exists! Cannot delete.');
-        }else if(response==9999){
-          $('#alert-text').html('Deletion not allowed, user(s) exists reporting to this user');
-        }  
-      }else if(response==0){
-        //close the modal and refresh the table
-        $('#insetModal').modal('hide');
-        refreshTable();
-      }
-    },
-    error: function(response) {
-      // Update failed, show an error message
-      alert('Delete failed');
-    }
-  });
-}
-
 </script>
-
+<?php 
+ include('user_insert_data.php');
+ include('user_fetch_data.php');
+ include('user_update_data.php');
+ include('user_delete_data.php');
+ ?>

@@ -318,13 +318,13 @@
         elseif($v_msg!=''){
         echo $v_msg;
         }
-    //echo '<br/>'.$v_query.'<br/>';
+        f_error($con);
     }
     else{
-    //echo $v_query.'<br/>';
+      f_error($con);
     }
   }catch(mysqli_sql_exception $e){
-    echo '<br>Error-'.mysqli_error($con);  
+    f_error($con); 
   }
 mysqli_rollback($con);
 // Close the connection

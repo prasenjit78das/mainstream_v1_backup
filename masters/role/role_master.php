@@ -54,7 +54,7 @@ try {
   <div class="col-md-8">
     <div class="input-group p-2 input-group-sm d-flex justify-content-end"
       data-bs-toggle='modal' data-bs-target='#insertModal' 
-      onclick="insup_data(0,'ins')">
+      onclick="insert_data(0,'ins')">
     <span class="input-group-text text-light bg-dark">Add Role</span>
     <button type='button' class='btn btn-light border border-3' >+</button>
   </div>
@@ -93,11 +93,11 @@ try {
               echo '<td class="td_text">'.$tritems["crtby"].'</td>';
               echo '<td class="td_text">'.$tritems["crton"].'</td>';
               echo '<td class="td_act">';?>
-                  <span onclick="insup_data(<?=$tritems['rolid'];?>,'edt')"
+                  <span onclick="update_data(<?=$tritems['rolid'];?>,'edt')"
                    data-bs-toggle="modal" data-bs-target="#insertModal">
                     <i class="bi-pencil-square"></i>
                   </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <span onclick="insup_data(<?=$tritems['rolid'];?>,'del')"
+                  <span onclick="delete_data(<?=$tritems['rolid'];?>,'del')"
                    data-bs-toggle="modal" data-bs-target="#insertModal">
                     <i class="bi-dash-circle"></i>
                   </span>
@@ -133,24 +133,6 @@ function f_get_nm_from_id($v_id, $a_data)
   return "";
 }
 ?>
-  <script>
-// To implement Export to CSV and ordering table
-$(document).ready(function() {
-  $('#tbl_sm').dataTable({
-    dom: 'lBfrtip',
-    buttons: [
-      {
-        extend: 'csvHtml5',
-        exportOptions: {
-            columns: [0]
-        },
-        text: ''
-      }            
-    ],
-    order: [[0, 'asc']]
-  });
-});
-</script>
 <!-- The Insert Modal -->
 <div class='modal' id='insertModal'>
   <div class='modal-dialog'>
@@ -173,7 +155,7 @@ $(document).ready(function() {
         </form>
       </div>
       <!-- Modal footer -->
-      <div class='modal-footer'>
+      <div class='modal-footer' id='div_alert'>
         <div class="container mt-3" id="div_warn" style="display:none;">
           <div class="alert alert-warning">
               <strong id="alert-text">Deletion not allowed, role(s) exists reporting to this role</strong>
@@ -186,184 +168,15 @@ $(document).ready(function() {
 </div>
 
 <script>
-  function insup_data(id,mode){ //'
-  //alert(mode)
-  if(mode=='ins'){///insert data
-    var blnk="";
-    $('#te_rolnm,#hi_rolid').val(blnk)
-                .removeAttr('disabled');
-    $('#bu_btn').show().val('Save')
-                .attr({'onclick':'insertRecord()','name':'su_add'});
-    $('.modal-title').html('Add Role');
-  }
-  else if(mode=='edt'){///update data
-    $('#te_rolnm').removeAttr('disabled');
-    $('#bu_btn').show().val('Save')
-                .attr({'onclick':'updateRecord()','name':'su_edt'});
-    $('.modal-title').html('Edit Role');
-    fetchRecord(id);
-  }else if(mode=='del'){///delete data
-    $('#bu_btn').show().val('Save')
-                .attr({'onclick':'deleteRecord()','name':'su_del'});
-    $('.modal-title').html('Delete Role');
-    fetchRecord(id);
-    $('#te_rolnm').attr('disabled',true);
-  }
-  $('#div_warn').hide();
-}
-
-  function insertRecord() {
-  //alert('Clicked');
-  // Get the values of the form fields
-  var v_rolnm = $('#te_rolnm').val();
-  var v_bu_btn = $('#bu_btn').val();
-   // Add more variables for each form field
-if((v_rolnm!='')){
-  $('#div_warn').hide();
-  // Make an AJAX request to the server-side script
-  $.ajax({
-    url: 'role_insup.php',
-    type: 'post',
-    data: {
-      rolnm: v_rolnm,
-      su_add: v_bu_btn,
-    },
-    // Add more data for each form field
-    success: function(response) {
-      //alert(response);
-      if(response!=''){
-        $('#div_warn').show();
-        if(response==1062){
-          $('#alert-text').html('Duplicate Role exists! Cannot proceed.');
-        }else{
-          $('#alert-text').html(response);
-        }
-      }
-      else if(response==''){
-      // Insert was successful, close the modal and refresh the table
-      $('#insertModal').modal('hide');
-      refreshTable();
-      }
-    },
-    error: function(response) {
-      // Insert failed, show an error message
-      alert('Insert failed');
-    }
-  });
-  }else{
-    $('#div_warn').show();
-    $('#alert-text').html('Please fill up mandatory fields !!');
-  }
-}
-/////
+  /////
 function refreshTable() {
   //alert('refresh');
   location.reload();
 }
-/////
-function fetchRecord(id) {  //alert(id);
-  // Make an AJAX request to the server-side script to 
-  //get the data for the selected record
-  $.ajax({
-    url: 'role_getiddata.php',
-    type: 'get',
-    dataType: 'json',
-    data: {rolid: id},
-    success: function(response) { //alert(response);
-      //alert('test');
-      // The request was successful, update the form with the returned data
-      $('#insertModal').modal('show');
-      $('#te_rolnm').val(response[0].rolnm);
-      $('#hi_rolid').val(id);              
-      // Add more form fields for each column in the table
-      //alert('ttt');
-    },
-    error: function(response) {
-      // The request failed, show an error message
-      alert('Error: '+response.responseText);
-    }
-  });
-}
-///
-function updateRecord() {
-  // Get the values of the form fields
-  var v_rolid = $('#hi_rolid').val();
-  var v_rolnm = $('#te_rolnm').val();
-  var v_bu_btn = $('#bu_btn').val();
-  // Make an AJAX request to the server-side script
-  if((v_rolnm!='')){
-  $.ajax({
-    url: 'role_insup.php',
-    type: 'post',
-    data: {
-      rolid: v_rolid,
-      rolnm: v_rolnm,
-      su_edt: v_bu_btn,
-    },
-    // Add more data for each form field
-    success: function(response) {
-      //alert(response);
-      if(response!=''){
-        $('#div_warn').show();
-        if(response==1062){
-          $('#alert-text').html('Duplicate Role exists! Cannot proceed.');
-        }else{
-          $('#alert-text').html(response);
-        }
-      }
-      else if(response==''){
-      // Update was successful, close the modal and refresh the table
-      $('#insertModal').modal('hide');
-      refreshTable();
-      }
-    },
-    error: function(response) {
-      // Update failed, show an error message
-      alert('Update failed');
-    }
-   });
-  }else{
-    $('#div_warn').show();
-    $('#alert-text').html('Please fill up mandatory fields !!');
-  }
-}
-///
-function deleteRecord() {
-  // Get the values of the form fields
-  var v_rolid = $('#hi_rolid').val();
-  var v_bu_btn = $('#bu_btn').val();
-  // Make an AJAX request to the server-side script
-  $.ajax({
-    url: 'role_insup.php',
-    type: 'post',
-    data: {
-      rolid: v_rolid,
-      su_del: v_bu_btn,
-    },
-    // Add more data for each form field
-    success: function(response) {//alert(response);
-      if(response>0){ 
-        $('#div_warn').show(); 
-        $('input[name="su_del"]').hide();
-        if(response==1062){
-          $('#alert-text').html('Duplicate Role exists! Cannot proceed.');
-        }else if(response==1451){
-          $('#alert-text').html('Child exists! Cannot delete.');
-        }else if(response==9999){
-          $('#alert-text').html('Deletion not allowed, role(s) exists reporting to this role');
-        }  
-      }else if(response==0){
-        //close the modal and refresh the table
-        $('#insetModal').modal('hide');
-        refreshTable();
-      }
-    },
-    error: function(response) {
-      // Update failed, show an error message
-      alert('Delete failed');
-    }
-  });
-}
-
 </script>
-
+<?php 
+ include('role_insert_data.php');
+ include('role_fetch_data.php');
+ include('role_update_data.php');
+ include('role_delete_data.php');
+ ?>

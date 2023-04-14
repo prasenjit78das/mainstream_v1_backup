@@ -52,7 +52,7 @@
       $result = mysqli_query($con, $v_query);
       $v_numrows=mysqli_num_rows($result);
        if(($v_numrows>0)&&($v_mod_nm_chk==1)){
-          $v_ermgs='Duplicate entry exists!!';
+          $v_ermgs='';
         }else{
           $v_ermgs='';
         }
@@ -102,15 +102,10 @@ try{  echo $v_ermgs;
       }
     }
     else{
-      //echo $v_query.'<br/>';
+      f_error($con);
     }
 }catch(mysqli_sql_exception $e){
-  $v_errno= mysqli_errno($con);
-  if($v_errno==1451){///Cannot delete or update a parent row:
-    // a foreign key constraint fails
-    $v_ermgs='Foreign key connectivity exists, cannot delete!';
-  }else{$v_ermgs='';}
-    echo $v_ermgs;
+  f_error($con);
 }
 Mysqli_rollback($con);
 // Close the connection

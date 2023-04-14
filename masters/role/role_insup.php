@@ -51,23 +51,13 @@
     elseif(isset($_POST['su_del'])){
     //echo 'delete role';
       $v_rolid = mysqli_real_escape_string($con, $_POST['rolid']);
-      //check if the roleid to be deleted is associated with any 'Report to Role' entry
-      $qmatrole = "SELECT * FROM `n_mast_role_name` WHERE `rptto` ='$v_rolid'";
-      $qmatroledata=mysqli_query($con,$qmatrole);
-      
-       $v_row_cnt = mysqli_num_rows($qmatroledata);
-        if($v_row_cnt==0){ 
+ 
           //Construct the Delete query
           $v_query = "UPDATE `n_mast_role_name` SET  `isdel` = 'Y',
                                               `updby` = '$v_urc',`updon` = '$v_tstamp' 
                                                WHERE `rolid` = '$v_rolid';";
-         }else{
-          echo '9999';
-          mysqli_close($con);
-          exit;
         }
-    }
-// Execute the query
+   // Execute the query
 try{
  
     mysqli_autocommit($con,false);
@@ -81,14 +71,11 @@ try{
       //echo '<br/>'.$v_query.'<br/>';
     }
     else{
-      //echo $v_query.'<br/>';
+      f_error($con);
         }
 
 }catch(mysqli_sql_exception $e){
-  //echo '<br>Error-'.mysqli_errno($con).mysqli_error($con);
- echo $v_errno = mysqli_errno($con);
- die("Error description: " . mysqli_error($con));
-   
+  f_error($con);
 }
 Mysqli_rollback($con);
 // Close the connection
