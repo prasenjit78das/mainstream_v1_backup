@@ -23,11 +23,12 @@ else{ //echo '<br>Found:'.$database_name.'<br>';
         if(mysqli_query($con, $qcrt1)){
             //echo '<br/>'.$q1.'<br/>';
             echo '<br>Designation table created';
-          }else{echo $qcrt1.'<br/>';
-          echo "<br/>Error-".mysqli_errno($con).mysqli_error($con);
-          }
+          }else{
+            // The query failed, die and show an error message
+            die('Error: '.mysqli_error($con));
+         }
     }catch(mysqli_sql_exception $e){
-        echo '<br>Error-'.mysqli_errno($con).mysqli_error($con);
+        die('Error: '.mysqli_error($con));
     }
 }
     //close the connection

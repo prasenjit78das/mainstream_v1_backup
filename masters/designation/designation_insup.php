@@ -69,13 +69,12 @@ try{
       //echo '<br/>'.$v_query.'<br/>';
     }
     else{
-      //echo $v_query.'<br/>';
+      die(mysqli_errno($con));
         }
 
 }catch(mysqli_sql_exception $e){
-  //echo '<br>Error-'.mysqli_errno($con).mysqli_error($con);
- echo $v_errno = mysqli_errno($con);
-   
+  //die and show error no
+  die(mysqli_errno($con));
 }
 Mysqli_rollback($con);
 // Close the connection

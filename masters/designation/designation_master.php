@@ -13,7 +13,7 @@ try {
   $a_desigres = mysqli_query($con, $v_qdesige);
 }catch(mysqli_sql_exception $e){
   $a_desigres ='';
-  echo '<br>Error:'.mysqli_error($con);
+  die(mysqli_error($con));
 }
 ?>
 
@@ -86,7 +86,7 @@ try {
         }
         catch(mysqli_sql_exception $e){
           $qmatroledata='';
-          echo '<br>Error:'.mysqli_error($con);
+          die(mysqli_error($con));
         }
       ?>
     </tbody>
@@ -110,25 +110,7 @@ function f_get_nm_from_id($v_id, $a_data)
   return "";
 }
 ?>
-  <script>
-// To implement Export to CSV and ordering table
-$(document).ready(function() {
-  $('#tbl_sm').dataTable({
-    dom: 'lBfrtip',
-    buttons: [
-      {
-        extend: 'csvHtml5',
-        exportOptions: {
-            columns: [0]
-        },
-        text: ''
-      }            
-    ],
-    order: [[0, 'asc']]
-  });
-});
-</script>
-<!-- The Insert Modal -->
+  <!-- The Insert Modal -->
 <div class='modal' id='insertModal'>
   <div class='modal-dialog'>
     <div class='modal-content' style="border-radius:0pt;">

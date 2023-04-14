@@ -10,10 +10,11 @@ else{ //echo '<br>Found:'.$database_name.'<br>';
 //Drop table 'Node master' ;
 $qd1="DROP TABLE `n_mast_designation`;";
 try {
-    mysqli_query($con, $qd1);
+    mysqli_query($con, $qd1)or
+      die(mysqli_error($con));
     echo '<br>designation table dropped';
     }catch(mysqli_sql_exception $e){
-        echo '<br>Error-'.mysqli_error($con);
+        die(mysqli_error($con));
     }
 }
 ?>

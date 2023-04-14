@@ -8,22 +8,19 @@ $v_desigid = mysqli_real_escape_string($con, $_GET['desigid']);
 $query = "SELECT * FROM `n_mast_designation` 
                    WHERE `desigid` = '$v_desigid'";
 // Execute the query
-$result = mysqli_query($con, $query);
-
-// Check the result
-if (!$result) {
-  // The query failed, show an error message
-  echo 'Error: '.mysqli_error($con);
-  exit();
-}
+$result = mysqli_query($con, $query)or
+  // The query failed, die and show an error message
+die('Error: '.mysqli_error($con));
 
 // Fetch the data into an array
-$data = mysqli_fetch_all($result, MYSQLI_ASSOC);
+//$a_desigdata = mysqli_fetch_all($result, MYSQLI_ASSOC);
+$a_desigdata = array();
+while ($rowdesig = mysqli_fetch_assoc($result )) {
+  $a_desigdata[] = $rowdesig;
+}
 
 // Return the data as JSON
-echo json_encode($data);
-
+echo json_encode($a_desigdata);
 // Close the connection
 mysqli_close($con);
-
 ?>

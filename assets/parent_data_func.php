@@ -1,5 +1,4 @@
 <?php
-
 // Construct the Role query for displaying designation 
 $v_role_qr = "SELECT `rolid`,`rolnm` FROM `n_mast_role_name`";
 // Execute the query
